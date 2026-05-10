@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.coderych</groupId>
+    <artifactId>server</artifactId>
+    <version>${revision}</version>
+    <packaging>pom</packaging>
+    <description>服务器后端项目，基于 Spring Boot 4.0 的多模块企业级应用框架</description>
+    <modules>
+        <module>server-commons</module>
+        <module>server-start</module>
+        <module>server-module-system</module>
+    </modules>
+
+    <!-- ==================== 属性配置：统一管理所有版本号 ==================== -->
+    <properties>
+        <!-- 项目版本号：统一管理所有模块版本，修改此处即可发布新版本 -->
+        <revision>1.0-SNAPSHOT</revision>
+
+        <!-- 编译器：Java 25，UTF-8 编码 -->
+        <maven.compiler.source>25</maven.compiler.source>
+        <maven.compiler.target>25</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- 插件版本：统一管理 Maven 插件版本，便于升级 -->
+        <maven-compiler-plugin.version>3.14.0</maven-compiler-plugin.version>
+        <maven-surefire-plugin.version>3.5.3</maven-surefire-plugin.version>
+        <maven-enforcer-plugin.version>3.5.0</maven-enforcer-plugin.version>
+        <flatten-maven-plugin.version>1.7.0</flatten-maven-plugin.version>
+
+        <!-- Spring Boot：应用框架 -->
+        <spring-boot.version>4.0.3</spring-boot.version>
+
+        <!-- 安全：Sa-Token 权限认证框架 -->
+        <sa-token.version>1.45.0</sa-token.version>
+
+        <!-- MySQL 驱动 -->
+        <mysql.version>8.4.0</mysql.version>
+        <!-- PostgreSQL 驱动 -->
+        <postgresql.version>42.7.3</postgresql.version>
+        <!-- MyBatis-Flex ORM 框架 -->
+        <mybatis-flex.version>1.11.6</mybatis-flex.version>
+        <!-- SQL 监控/日志 -->
+        <p6spy.version>3.9.1</p6spy.version>
+
+        <!-- 缓存：Redisson Redis 客户端 -->
+        <redisson.version>4.3.0</redisson.version>
+
+        <!-- Hutool 通用工具集 -->
+        <hutool.version>5.8.43</hutool.version>
+        <!-- Lombok 简化 POJO -->
+        <lombok.version>1.18.42</lombok.version>
+        <!-- MapStruct Plus 对象映射 -->
+        <mapstruct-plus.version>1.5.0</mapstruct-plus.version>
+        <!-- Apache 字符串/对象工具 -->
+        <commons-lang3.version>3.19.0</commons-lang3.version>
+        <!-- Apache IO 工具 -->
+        <commons-io.version>2.21.0</commons-io.version>
+        <!-- Apache 网络工具 -->
+        <commons-net.version>3.10.0</commons-net.version>
+        <!-- Apache 连接池 -->
+        <commons-pool2.version>2.12.0</commons-pool2.version>
+        <!-- OkHttp HTTP 客户端 -->
+        <okhttp.version>5.3.0</okhttp.version>
+        <!-- X-File-Storage 文件存储 -->
+        <x-file-storage.version>2.3.0</x-file-storage.version>
+        <!-- BouncyCastle 加密库 -->
+        <bcprov-jdk18on.version>1.78.1</bcprov-jdk18on.version>
+
+        <!-- Fesod Sheet（EasyExcel 继任者） -->
+        <fesod-sheet.version>2.0.1-incubating</fesod-sheet.version>
+        <!-- Apache POI -->
+        <poi.version>5.5.0</poi.version>
+
+        <!-- 消息发送：SMS4J 短信聚合框架 -->
+        <sms4j.version>3.3.5</sms4j.version>
+
+        <!-- 对象存储：AWS S3 SDK -->
+        <aws.sdk.version>2.29.44</aws.sdk.version>
+
+        <!-- XSS 过滤：Jsoup HTML 清理 -->
+        <jsoup.version>1.18.1</jsoup.version>
+
+        <!-- AI：Spring AI 集成框架 -->
+        <spring-ai.version>2.0.0-M4</spring-ai.version>
+        <xxl-job.version>3.4.0</xxl-job.version>
+    </properties>
+
+    <!-- ==================== 依赖版本管理：BOM 统一管控传递依赖版本 ==================== -->
+    <dependencyManagement>
+        <dependencies>
+            <!-- Spring Boot BOM：管理 Spring 生态全部依赖版本（Web、Data、Test 等） -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- MyBatis-Flex BOM：管理 ORM 相关依赖版本 -->
+            <dependency>
+                <groupId>com.mybatis-flex</groupId>
+                <artifactId>mybatis-flex-dependencies</artifactId>
+                <version>${mybatis-flex.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- AWS SDK BOM：管理 S3/OSS 等对象存储 SDK 版本 -->
+            <dependency>
+                <groupId>software.amazon.awssdk</groupId>
+                <artifactId>bom</artifactId>
+                <version>${aws.sdk.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- Spring AI BOM：管理 AI 模型集成（OpenAI、Ollama 等）依赖版本 -->
+            <dependency>
+                <groupId>org.springframework.ai</groupId>
+                <artifactId>spring-ai-bom</artifactId>
+                <version>${spring-ai.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- ==================== 安全 ==================== -->
+            <dependency>
+                <groupId>cn.dev33</groupId>
+                <artifactId>sa-token-spring-boot4-starter</artifactId>
+                <version>${sa-token.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.dev33</groupId>
+                <artifactId>sa-token-redis-template</artifactId>
+                <version>${sa-token.version}</version>
+            </dependency>
+
+            <!-- ==================== 数据库相关 ==================== -->
+            <dependency>
+                <groupId>com.mysql</groupId>
+                <artifactId>mysql-connector-j</artifactId>
+                <version>${mysql.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>${postgresql.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>p6spy</groupId>
+                <artifactId>p6spy</artifactId>
+                <version>${p6spy.version}</version>
+            </dependency>
+
+            <!-- ==================== 缓存相关 ==================== -->
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson-spring-boot-starter</artifactId>
+                <version>${redisson.version}</version>
+            </dependency>
+
+            <!-- ==================== 工具类库 ==================== -->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.bouncycastle</groupId>
+                <artifactId>bcprov-jdk18on</artifactId>
+                <version>${bcprov-jdk18on.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.linpeilie</groupId>
+                <artifactId>mapstruct-plus-spring-boot-starter</artifactId>
+                <version>${mapstruct-plus.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-net</groupId>
+                <artifactId>commons-net</artifactId>
+                <version>${commons-net.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-pool2</artifactId>
+                <version>${commons-pool2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.squareup.okhttp3</groupId>
+                <artifactId>okhttp-jvm</artifactId>
+                <version>${okhttp.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.squareup.okhttp3</groupId>
+                <artifactId>mockwebserver3</artifactId>
+                <version>${okhttp.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.dromara.x-file-storage</groupId>
+                <artifactId>x-file-storage-spring</artifactId>
+                <version>${x-file-storage.version}</version>
+            </dependency>
+
+            <!-- ==================== Excel ==================== -->
+            <dependency>
+                <groupId>org.apache.fesod</groupId>
+                <artifactId>fesod-sheet</artifactId>
+                <version>${fesod-sheet.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi</artifactId>
+                <version>${poi.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi-ooxml</artifactId>
+                <version>${poi.version}</version>
+            </dependency>
+
+            <!-- ==================== 消息发送 ==================== -->
+            <dependency>
+                <groupId>org.dromara.sms4j</groupId>
+                <artifactId>sms4j-spring-boot-starter</artifactId>
+                <version>${sms4j.version}</version>
+            </dependency>
+
+            <!-- ==================== XSS 过滤 ==================== -->
+            <dependency>
+                <groupId>org.jsoup</groupId>
+                <artifactId>jsoup</artifactId>
+                <version>${jsoup.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.xuxueli</groupId>
+                <artifactId>xxl-job-core</artifactId>
+                <version>${xxl-job.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <!-- ==================== 全局依赖：所有模块自动继承 ==================== -->
+    <dependencies>
+        <!-- Lombok：编译期生成 getter/setter/构造器等，provided 不打入最终包 -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <!-- MapStruct Plus：编译期生成对象映射代码（替代手动 BeanUtils.copyProperties） -->
+        <dependency>
+            <groupId>io.github.linpeilie</groupId>
+            <artifactId>mapstruct-plus-spring-boot-starter</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <!-- 资源过滤：将 application.yml 中的 @属性占位符@ 替换为 Maven 属性值 -->
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+
+        <!-- 插件版本管理：子模块无需重复声明版本号 -->
+        <pluginManagement>
+            <plugins>
+                <!-- 编译插件：Java 25，配置 Lombok 和 MapStruct Plus 注解处理器 -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven-compiler-plugin.version}</version>
+                    <configuration>
+                        <release>${maven.compiler.source}</release>
+                        <encoding>${project.build.sourceEncoding}</encoding>
+                        <parameters>true</parameters>
+                        <annotationProcessorPaths>
+                            <path>
+                                <groupId>org.projectlombok</groupId>
+                                <artifactId>lombok</artifactId>
+                                <version>${lombok.version}</version>
+                            </path>
+                            <path>
+                                <groupId>io.github.linpeilie</groupId>
+                                <artifactId>mapstruct-plus-processor</artifactId>
+                                <version>${mapstruct-plus.version}</version>
+                            </path>
+                        </annotationProcessorPaths>
+                    </configuration>
+                </plugin>
+                <!-- 单元测试插件：执行 mvn test 时运行测试用例 -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${maven-surefire-plugin.version}</version>
+                </plugin>
+                <!-- POM 扁平化插件：install 时将 ${revision} 等 CI-friendly 占位符解析为实际值写入 .m2，确保其他项目能正确解析依赖版本（Maven CI Friendly 必备） -->
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>flatten-maven-plugin</artifactId>
+                    <version>${flatten-maven-plugin.version}</version>
+                    <configuration>
+                        <updatePomFile>true</updatePomFile>
+                        <flattenMode>resolveCiFriendliesOnly</flattenMode>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>flatten</id>
+                            <phase>process-resources</phase>
+                            <goals>
+                                <goal>flatten</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>flatten.clean</id>
+                            <phase>clean</phase>
+                            <goals>
+                                <goal>clean</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <!-- 环境检查插件：强制要求 Java 和 Maven 最低版本，不满足则构建失败 -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-enforcer-plugin</artifactId>
+                    <version>${maven-enforcer-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>enforce-java</id>
+                            <goals>
+                                <goal>enforce</goal>
+                            </goals>
+                            <configuration>
+                                <rules>
+                                    <requireJavaVersion>
+                                        <version>${maven.compiler.source}</version>
+                                    </requireJavaVersion>
+                                    <requireMavenVersion>
+                                        <version>3.9.0</version>
+                                    </requireMavenVersion>
+                                </rules>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+                <!-- Spring Boot 打包插件：生成可执行 fat jar，排除 Lombok（仅编译期使用） -->
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${spring-boot.version}</version>
+                    <configuration>
+                        <excludes>
+                            <exclude>
+                                <groupId>org.projectlombok</groupId>
+                                <artifactId>lombok</artifactId>
+                            </exclude>
+                        </excludes>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+        <!-- 全局激活的插件：所有模块构建时自动执行 -->
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+            </plugin>
+            <!-- Flatten 插件：将 ${revision} 等 CI-friendly 占位符替换为实际值，确保 install/deploy 正常 -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>flatten-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+    <repositories>
+        <!-- 阿里云公共仓库 -->
+        <repository>
+            <id>aliyun-public</id>
+            <name>Aliyun Public</name>
+            <url>https://maven.aliyun.com/repository/public</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <!-- 腾讯云公共仓库 -->
+        <repository>
+            <id>tencent-public</id>
+            <name>Tencent Public</name>
+            <url>https://mirrors.cloud.tencent.com/nexus/repository/maven-public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <!-- Spring 里程碑版本（spring-ai 等） -->
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <!-- Spring 快照版本 -->
+        <repository>
+            <id>spring-snapshots</id>
+            <name>Spring Snapshots</name>
+            <url>https://repo.spring.io/snapshot</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </repository>
+    </repositories>
+
+    <!-- ==================== 插件仓库：Maven 插件下载源（与 dependencies 仓库独立配置） ==================== -->
+    <pluginRepositories>
+        <pluginRepository>
+            <id>aliyun-public</id>
+            <name>Aliyun Public</name>
+            <url>https://maven.aliyun.com/repository/public</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>tencent-public</id>
+            <name>Tencent Public</name>
+            <url>https://mirrors.cloud.tencent.com/nexus/repository/maven-public/</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <!-- ==================== 构建 Profile：通过 -P 参数快速切换环境 ==================== -->
+    <!-- 用法：mvn clean package -P prod（不指定则默认 dev） -->
+    <!-- 原理：设置 spring.profiles.active 属性 → 资源过滤替换 application.yml 中的占位符 -->
+    <profiles>
+        <!-- 开发环境（默认激活）：本地调试，对应 application-dev.yml -->
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <spring.profiles.active>dev</spring.profiles.active>
+            </properties>
+        </profile>
+        <!-- 测试环境：联调/集成测试，对应 application-test.yml -->
+        <profile>
+            <id>test</id>
+            <properties>
+                <spring.profiles.active>test</spring.profiles.active>
+            </properties>
+        </profile>
+        <!-- 生产环境：线上部署，对应 application-prod.yml -->
+        <profile>
+            <id>prod</id>
+            <properties>
+                <spring.profiles.active>prod</spring.profiles.active>
+            </properties>
+        </profile>
+    </profiles>
+
+</project>

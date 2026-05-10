@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.coderych</groupId>
+        <artifactId>server-commons</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <artifactId>commons-all</artifactId>
+    <description>通用组件聚合模块，整合所有 commons 子模块提供一站式依赖引入</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.coderych</groupId>
+            <artifactId>commons-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.coderych</groupId>
+            <artifactId>commons-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.coderych</groupId>
+            <artifactId>commons-test</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.coderych</groupId>
+            <artifactId>commons-cache</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.coderych</groupId>
+            <artifactId>commons-sa-token</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.coderych</groupId>
+            <artifactId>commons-mybatis-flex</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.coderych</groupId>
+            <artifactId>commons-log</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.coderych</groupId>
+            <artifactId>commons-oss</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.coderych</groupId>
+            <artifactId>commons-job</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>

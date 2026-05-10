@@ -1,0 +1,74 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&tinyInt1isBit=false&allowLoadLocalInfile=true&allowLocalInfile=true&allowUrlInLocalInfile=true&allowPublicKeyRetrieval=true&allowMultiQueries=true&allowMultiQueries=true&allowPublicKeyRetrieval=true&allowUrlInLocalInfile=true
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:123456}
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
+  ai:
+    openai:
+      base-url: https://api.xiaomimimo.com
+      api-key: ${AI_API_KEY:sk-your-api-key-here}
+      chat:
+        options:
+          model: mimo-v2-flash
+
+commons:
+  sa-token:
+    enabled: false
+  job:
+    xxl:
+      enabled: false
+      admin-addresses: http://localhost:8090/xxl-job-admin
+      access-token: default_token
+      appname: server-executor
+      port: 9999
+      log-retention-days: 30
+      timeout: 3
+    quartz:
+      enabled: true
+      scheduler-name: commons-job-scheduler
+      retry:
+        max-attempts: 3
+        delay-ms: 1000
+        backoff-multiplier: 2.0
+
+  web:
+    crypto:
+      enabled: true
+      algorithms:
+        # AES 对称加密（CBC 模式，PKCS5 填充）
+        aes:
+          type: AES
+          mode: CBC
+          padding: PKCS5Padding
+          key: MDEyMzQ1Njc4OWFiY2RlZg== # 0123456789abcdef 的 Base64 编码（16 字节）
+          iv: MDEyMzQ1Njc4OWFiY2RlZg== # 初始化向量，与 key 相同长度
+          encoding: BASE64
+        # SM4 对称加密（CBC 模式，PKCS5 填充）
+        sm4:
+          type: SM4
+          mode: CBC
+          padding: PKCS5Padding
+          key: MDEyMzQ1Njc4OWFiY2RlZg== # 0123456789abcdef 的 Base64 编码（16 字节）
+          iv: MDEyMzQ1Njc4OWFiY2RlZg== # 初始化向量，与 key 相同长度
+          encoding: BASE64
+        # RSA 非对称加密（测试密钥对）
+        rsa:
+          type: RSA
+          public-key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1IadU55M1+Ly12xxmkHFhyOYS24aHuPtVvPcSEYBXDkDkOlEXo5qfYwmjzrmDA/aDa5D4JzvlUwltCyodWx99GQYypO/q72KFJjo1l7AyMYZlLXrq3fSD40bekOH0D40Ka9DKv+110vtmJDdc9kaLGMFlo4fyL8EcbLJgHNlRaRdryAVCWmXHdU11nQ0ZEwIQNZghO/7ZciyUiB982A2YpkXWtmwSnWPAQFK+TyzJ+jbw7JdpRQ65yiOm8cr87Ez2XEwMXqN3wMjaRagPeikFgvxIvkUwhkDd7LY6A22ulOngMYj+aXGy7Pum8zlrI6g9AS2Lii4AGJ033d+hSrFwwIDAQAB
+          private-key: MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDUhp1TnkzX4vLXbHGaQcWHI5hLbhoe4+1W89xIRgFcOQOQ6URejmp9jCaPOuYMD9oNrkPgnO+VTCW0LKh1bH30ZBjKk7+rvYoUmOjWXsDIxhmUteurd9IPjRt6Q4fQPjQpr0Mq/7XXS+2YkN1z2RosYwWWjh/IvwRxssmAc2VFpF2vIBUJaZcd1TXWdDRkTAhA1mCE7/tlyLJSIH3zYDZimRda2bBKdY8BAUr5PLMn6NvDsl2lFDrnKI6bxyvzsTPZcTAxeo3fAyNpFqA96KQWC/Ei+RTCGQN3stjoDba6U6eAxiP5pcbLs+6bzOWsjqD0BLYuKLgAYnTfd36FKsXDAgMBAAECggEAAnqURZabfHEjNl86omGRNXBO2G8vH5xQKl5E++E4WgqemTp/StlyZVOuWqe4z/wA8rCzp5NtBlrEndAsVTvjHc44RwFnw0/X10GpUmBfwBFZC9XLXk0GRpqPIkmJwTE+8bWGA2+UGWMpuq8F39IKbulNj8hi/bgGPz7ZZtKLV3KVfR57H6UIJAOhl2KarHJ3WFyWWt6Zv71neKXt8vzhzbLDfAU096LKjDS4iCMHJvteluVzweK65V2BkyTHSUxc3bAnQ+QsJRRwh4AczBorcIdX24SGFmh6rBPZM6IipzfDECcOtnlq24/hT+WSJLgURmphf6W6ktls8kX7CLXSEQKBgQD2+wLqqA7+E2L2eNn562+iqmBdzwhciydvhYlUueEy2347/8CVpDuFmXIc119QgRL2djjy+J+kCvjpvCLC+EUZgv9DCqbH7Hh9eyQiDHcBJ6mjlhmqfXAfZFHGHKivaUBvm2NkoLgBwgb8Rc30Z+dZhzU6878PzH9mWcWCQhZ35wKBgQDcSX2rnGD3RGTZe4tWyajkK/v/8gBUhoSW6MoADydn8DVjEGJRbNaTc9xc3Y7arX4pIcn59098+UFHr9VuDARcoahls6zHRP/+xBICErX55/WqOymgvwtkffjTM9aqbiO8R0VjVr3mvGaXlbvQfAnxhi1qvdHODdeavx9DB7dXxQKBgGvvfPHSKmMtU8WFQTWwh6QeM2krzmqrQbvCLydA6MMSG5PbDG4ZTQ3w5mbmVLhZAFGHjxHYR+QoC2oSl1p/p6sjjazd3c9nb6zfAQaETgnKLJ/aPDM/CJ4feIFNCwdFxyw/S2uxtVjHU8gyNXTHZ9q/dSrjVS9xXof7WY64lRsnAoGBALfugQkGdIxhxhc1qd2YWfXSqAJITXBGNXVQAEJWZN/LWLhTmNRGHVBXQFsl/76leB7eAKg/kFZYROKXdY0Caa3yqQnqIUztVxahHiwu9VUqEhzGc3atrdSFvnqS4R3DAwGVPOG6Lqv3CW5ubrigqSjKkSd8QS9crXafOHoeej7FAoGALEwanU/RutZ5Vxo4DfjCUi9zwYcdPxXBRAZZjPPQQhwiD/lAYyHju2371gxvRjegTa6oIdvQFakWRGEck377mMevzvV37ZXEQbGH7mQqCh3qvsWK/leEy/8jvKgaaoyUq1Zr5PYLhHGN3J1JjY2AnKoV6ahcv9LPGJ402249r/8=
+          encoding: BASE64
+        # SM2 非对称加密（测试密钥对）
+        sm2:
+          type: SM2
+          public-key: MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEYVx9Xd3qRvVAKvaygV2upKy6eqCffWfMoyXuptbAGhIcLl7v9YUZcDkSgmW0/+I82CnjMJ9m1K36hEUoL+YWRA==
+          private-key: MEECAQAwEwYHKoZIzj0CAQYIKoZIzj0DAQcEJzAlAgEBBCCwpoMXpvOprbQaOz1a1FYyQkSooZ6pGKT0tHya1UJqvA==
+          encoding: BASE64
