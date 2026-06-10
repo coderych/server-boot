@@ -25,7 +25,7 @@ public final class RedisCache {
     @Getter
     private static volatile RedisTemplate<String, Object> redisTemplate;
 
-    public static void init(RedisTemplate<String, Object> redisTemplate) {
+    public static synchronized void init(RedisTemplate<String, Object> redisTemplate) {
         if (redisTemplate == null) {
             throw new IllegalArgumentException("RedisTemplate must not be null");
         }

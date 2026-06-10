@@ -13,8 +13,8 @@ CREATE TABLE IF NOT EXISTS `sys_user` (
     UNIQUE KEY `uk_username` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='用户表';
 
--- 插入测试数据
+-- 插入测试数据（密码为 BCrypt 哈希值，明文均为 123456）
 INSERT INTO `sys_user` (`username`, `password`, `nickname`, `email`, `phone`, `status`) VALUES
-('admin', '123456', '管理员', 'admin@example.com', '13800138000', 1),
-('user1', '123456', '用户1', 'user1@example.com', '13800138001', 1),
-('user2', '123456', '用户2', 'user2@example.com', '13800138002', 0);
+('admin', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOsl7iAt6Z5EH', '管理员', 'admin@example.com', '13800138000', 1),
+('user1', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOsl7iAt6Z5EH', '用户1', 'user1@example.com', '13800138001', 1),
+('user2', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOsl7iAt6Z5EH', '用户2', 'user2@example.com', '13800138002', 0);

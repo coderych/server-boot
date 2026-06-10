@@ -25,7 +25,7 @@ public final class QuartzJobManager {
 
     private static volatile JobRetryPolicy defaultRetryPolicy;
 
-    public static void init(Scheduler scheduler, JobRetryPolicy defaultRetryPolicy) {
+    public static synchronized void init(Scheduler scheduler, JobRetryPolicy defaultRetryPolicy) {
         Assert.notNull(scheduler, "Scheduler must not be null");
         Assert.notNull(defaultRetryPolicy, "JobRetryPolicy must not be null");
         QuartzJobManager.scheduler = scheduler;

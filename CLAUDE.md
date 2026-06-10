@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 项目概述
 
-`com.coderych:server` — 基于 Spring Boot 4.0 的多模块企业级应用框架，采用 Java 25。
+`com.coderych:server` — 基于 Spring Boot 4.0 的多模块企业级应用框架，采用 Java 21。
 
 ## 构建与运行
 
@@ -36,7 +36,7 @@ mvn clean package -P prod   # 生产环境
 
 ## 架构
 
-根 POM（`com.coderych:server:1.0-SNAPSHOT`，Java 25）：
+根 POM（`com.coderych:server:1.0-SNAPSHOT`，Java 21）：
 
 ```
 server

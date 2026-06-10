@@ -76,7 +76,7 @@ public class RedisQueueTemplate {
             consumer.accept(targetType.cast(record.getValue().getPayload()));
             ack(queueName, consumerGroup, record.getId().getValue());
         } catch (RuntimeException exception) {
-            requeue(queueName, record);
+            requeue(queueName, consumerGroup, record);
             throw exception;
         }
     }
@@ -97,23 +97,24 @@ public class RedisQueueTemplate {
         return records == null || records.isEmpty() ? null : records.getFirst();
     }
 
-    private void requeue(String queueName, ObjectRecord<String, RedisQueueMessage> record) {
+    private void requeue(String queueName, String consumerGroup, ObjectRecord<String, RedisQueueMessage> record) {
         int retryCount = record.getValue().getRetryCount();
         if (retryCount >= properties.getQueue().getMaxRetryCount()) {
-            moveToDeadLetter(queueName, record);
+            moveToDeadLetter(queueName, consumerGroup, record);
             return;
         }
         RedisQueueMessage<?> message = record.getValue();
         message.setRetryCount(retryCount + 1);
         streamOperations().add(ObjectRecord.create(streamKey(queueName), message));
+        ack(queueName, consumerGroup, record.getId().getValue());
     }
 
-    private void moveToDeadLetter(String queueName, ObjectRecord<String, RedisQueueMessage> record) {
+    private void moveToDeadLetter(String queueName, String consumerGroup, ObjectRecord<String, RedisQueueMessage> record) {
         String deadLetterKey = streamKey(queueName) + DEAD_LETTER_SUFFIX;
         RedisQueueMessage<?> message = record.getValue();
         message.setRetryCount(message.getRetryCount() + 1);
         streamOperations().add(ObjectRecord.create(deadLetterKey, message));
-        ack(queueName, properties.getQueue().getConsumerGroupPrefix(), record.getId().getValue());
+        ack(queueName, consumerGroup, record.getId().getValue());
         log.warn("Message exceeded max retry count, moved to dead letter queue: {}", deadLetterKey);
     }
 

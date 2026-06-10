@@ -22,6 +22,7 @@ public final class WebUtils {
     private static final String UNKNOWN_IP = "unknown";
 
     private static final String[] IP_HEADER_NAMES = {
+            "X-Real-IP",
             "X-Forwarded-For",
             "Proxy-Client-IP",
             "WL-Proxy-Client-IP",
@@ -75,5 +76,9 @@ public final class WebUtils {
             return index > 0 ? value.substring(0, index).trim() : value.trim();
         }
         return request.getRemoteAddr();
+    }
+
+    public static String getRemoteAddr() {
+        return getRequestOptional().map(HttpServletRequest::getRemoteAddr).orElse(null);
     }
 }

@@ -26,15 +26,11 @@ public final class Cryptos {
     @Getter
     private static volatile WebProperties.Crypto cryptoProperties = new WebProperties.Crypto();
 
-    public static void init(WebProperties webProperties) {
+    public static synchronized void init(WebProperties webProperties) {
         if (webProperties == null) {
             throw new IllegalArgumentException("WebProperties must not be null");
         }
         Cryptos.cryptoProperties = webProperties.getCrypto();
-    }
-
-    public static void reset() {
-        cryptoProperties = new WebProperties.Crypto();
     }
 
     public static String encrypt(String plaintext, String key) {

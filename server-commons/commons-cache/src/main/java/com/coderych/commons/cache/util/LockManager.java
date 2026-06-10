@@ -27,7 +27,7 @@ public final class LockManager {
 
     private static volatile RedissonClient redissonClient;
 
-    public static void init(CacheProperties properties, RedissonClient redissonClient) {
+    public static synchronized void init(CacheProperties properties, RedissonClient redissonClient) {
         if (properties == null || redissonClient == null) {
             throw new IllegalArgumentException("CacheProperties and RedissonClient must not be null");
         }
@@ -92,7 +92,7 @@ public final class LockManager {
     }
 
     public static boolean tryLock(String name, String key) {
-        return tryLock(name, key, -1L, -1L, null);
+        return tryLock(name, key, 0L, -1L, null);
     }
 
     public static boolean tryLock(String name, String key, long waitTime, long leaseTime, TimeUnit timeUnit) {

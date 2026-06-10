@@ -1,6 +1,7 @@
 package com.coderych.commons.mybatisflex.autoconfigure;
 
 import com.coderych.commons.mybatisflex.model.BaseEntity;
+import com.coderych.commons.mybatisflex.aspect.CrudApiAspect;
 import com.coderych.commons.mybatisflex.service.DatabaseMetadataService;
 import com.coderych.commons.satoken.core.LoginUser;
 import com.mybatisflex.core.audit.AuditManager;
@@ -44,6 +45,13 @@ public class MyBatisFlexAutoConfiguration {
     public DatabaseMetadataService databaseMetadataService(DataSource dataSource) {
         log.info(">>>>>>>>> Bean: databaseMetadataService —— 注册数据库元数据服务");
         return new DatabaseMetadataService(dataSource);
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    public CrudApiAspect crudApiAspect() {
+        log.info(">>>>>>>>> Bean: crudApiAspect —— 注册 CRUD 接口访问控制切面");
+        return new CrudApiAspect();
     }
 
     @Bean

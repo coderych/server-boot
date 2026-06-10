@@ -24,7 +24,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 @Slf4j
 @RestControllerAdvice
 @RequiredArgsConstructor
-public class GlobalResponseBodyAdvice implements ResponseBodyAdvice<Object> {
+public class EncryptResponseBodyAdvice implements ResponseBodyAdvice<Object> {
     private final WebProperties webProperties;
 
     @Override

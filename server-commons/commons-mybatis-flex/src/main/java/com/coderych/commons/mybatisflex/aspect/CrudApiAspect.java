@@ -32,7 +32,7 @@ public class CrudApiAspect {
 
     @Around("execution(* com.coderych.commons.mybatisflex.controller.BaseController+.*(..))")
     public Object around(ProceedingJoinPoint point) throws Throwable {
-        log.info(">>>>>>>>> CrudApiAspect —— CRUD 接口访问控制: {}.{}",
+        log.debug(">>>>>>>>> CrudApiAspect —— CRUD 接口访问控制: {}.{}",
                 point.getSignature().getDeclaringType().getSimpleName(), point.getSignature().getName());
         MethodSignature signature = (MethodSignature) point.getSignature();
         Method method = signature.getMethod();
@@ -54,7 +54,7 @@ public class CrudApiAspect {
                 k -> Arrays.stream(crudApi.excludes()).collect(Collectors.toUnmodifiableSet()));
 
         if (!includes.isEmpty() && !excludes.isEmpty()) {
-            throw new BadRequestException("@Control 的 includes 和 excludes 不能同时指定");
+            throw new BadRequestException("@CrudApi 的 includes 和 excludes 不能同时指定");
         }
 
         if (!includes.isEmpty() && !includes.contains(api)) {

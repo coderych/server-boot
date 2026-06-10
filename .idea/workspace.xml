@@ -5,12 +5,51 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e7bc3544-ec3e-40e3-b5cd-278280c26959" name="更改" comment="feat(mybatis-flex): 集成 MyBatis-Flex 自动配置功能">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CLAUDE.md" beforeDir="false" afterPath="$PROJECT_DIR$/CLAUDE.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-cache/src/main/java/com/coderych/commons/cache/aspect/LockAspect.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-cache/src/main/java/com/coderych/commons/cache/aspect/LockAspect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-cache/src/main/java/com/coderych/commons/cache/support/CacheKeyBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-cache/src/main/java/com/coderych/commons/cache/support/CacheKeyBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-cache/src/main/java/com/coderych/commons/cache/support/RedisQueueTemplate.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-cache/src/main/java/com/coderych/commons/cache/support/RedisQueueTemplate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-cache/src/main/java/com/coderych/commons/cache/support/TtlCacheNameResolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-cache/src/main/java/com/coderych/commons/cache/support/TtlCacheNameResolver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-cache/src/main/java/com/coderych/commons/cache/util/LockManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-cache/src/main/java/com/coderych/commons/cache/util/LockManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-cache/src/main/java/com/coderych/commons/cache/util/RedisCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-cache/src/main/java/com/coderych/commons/cache/util/RedisCache.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-cache/src/test/java/com/coderych/commons/cache/autoconfigure/CacheAutoConfigurationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-cache/src/test/java/com/coderych/commons/cache/autoconfigure/CacheAutoConfigurationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-core/src/main/java/com/coderych/commons/core/exception/JobException.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-core/src/main/java/com/coderych/commons/core/exception/JobException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-core/src/main/java/com/coderych/commons/core/model/Query.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-core/src/main/java/com/coderych/commons/core/model/Query.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-core/src/main/java/com/coderych/commons/core/util/BEAN.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-core/src/main/java/com/coderych/commons/core/util/BEAN.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-core/src/main/java/com/coderych/commons/core/util/JSON.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-core/src/main/java/com/coderych/commons/core/util/JSON.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-core/src/main/java/com/coderych/commons/core/util/json/BigNumberSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-core/src/main/java/com/coderych/commons/core/util/json/BigNumberSerializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-core/src/main/java/com/coderych/commons/core/util/web/HttpUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-core/src/main/java/com/coderych/commons/core/util/web/HttpUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-core/src/main/java/com/coderych/commons/core/util/web/WebUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-core/src/main/java/com/coderych/commons/core/util/web/WebUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-core/src/test/java/com/coderych/commons/core/util/IfTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-core/src/test/java/com/coderych/commons/core/util/IfTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-job/src/main/java/com/coderych/commons/job/util/QuartzJobManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-job/src/main/java/com/coderych/commons/job/util/QuartzJobManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-mybatis-flex/src/main/java/com/coderych/commons/mybatisflex/aspect/CrudApiAspect.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-mybatis-flex/src/main/java/com/coderych/commons/mybatisflex/aspect/CrudApiAspect.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server-commons/commons-mybatis-flex/src/main/java/com/coderych/commons/mybatisflex/autoconfigure/MyBatisFlexAutoConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-mybatis-flex/src/main/java/com/coderych/commons/mybatisflex/autoconfigure/MyBatisFlexAutoConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-sa-token/src/main/java/com/coderych/commons/satoken/autoconfigure/SaTokenAutoConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-sa-token/src/main/java/com/coderych/commons/satoken/autoconfigure/SaTokenAutoConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-web/src/main/java/com/coderych/commons/web/autoconfigure/WebAutoConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-web/src/main/java/com/coderych/commons/web/autoconfigure/WebAutoConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-web/src/main/java/com/coderych/commons/web/handler/GlobalRequestBodyAdvice.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-web/src/main/java/com/coderych/commons/web/handler/DecryptRequestBodyAdvice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-web/src/main/java/com/coderych/commons/web/handler/GlobalResponseBodyAdvice.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-web/src/main/java/com/coderych/commons/web/handler/EncryptResponseBodyAdvice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-web/src/main/java/com/coderych/commons/web/util/Cryptos.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-web/src/main/java/com/coderych/commons/web/util/Cryptos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-web/src/test/java/com/coderych/commons/web/autoconfigure/WebAutoConfigurationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-web/src/test/java/com/coderych/commons/web/autoconfigure/WebAutoConfigurationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-web/src/test/java/com/coderych/commons/web/util/CryptosTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-web/src/test/java/com/coderych/commons/web/util/CryptosTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-module-system/src/main/resources/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/server-module-system/src/main/resources/schema.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-start/src/main/java/com/coderych/server/RunApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-start/src/main/java/com/coderych/server/RunApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-start/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/server-start/src/main/resources/application-dev.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -28,16 +67,46 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Maven.server [clean].executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "Spring Boot.RunApplication.executor": "Run",
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/Workspace/YCH/server-boot",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "项目",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "Qoder CN",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="RunApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UnknownPolicyInFreeMode" />
+      <module name="server-start" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.coderych.server.RunApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.coderych.server.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.RunApplication" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="默认任务">
       <changelist id="e7bc3544-ec3e-40e3-b5cd-278280c26959" name="更改" comment="feat(mybatis-flex): 集成 MyBatis-Flex 自动配置功能" />

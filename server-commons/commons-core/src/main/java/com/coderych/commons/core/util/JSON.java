@@ -25,13 +25,13 @@ public final class JSON {
     @Getter
     private static volatile JsonMapper jsonMapper = JsonMapper.builder().build();
 
-    public static void init(JsonMapper jsonMapper) {
+    public static synchronized void init(JsonMapper jsonMapper) {
         if (jsonMapper != null) {
             JSON.jsonMapper = jsonMapper;
         }
     }
 
-    public static void reset() {
+    public static synchronized void reset() {
         jsonMapper = JsonMapper.builder().build();
     }
 

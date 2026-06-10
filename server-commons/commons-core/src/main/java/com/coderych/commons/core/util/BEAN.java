@@ -22,13 +22,13 @@ public final class BEAN {
     @Getter
     private static volatile Converter converter = new Converter();
 
-    public static void init(Converter converter) {
+    public static synchronized void init(Converter converter) {
         if (converter != null) {
             BEAN.converter = converter;
         }
     }
 
-    public static void reset() {
+    public static synchronized void reset() {
         converter = new Converter();
     }
 

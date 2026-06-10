@@ -1,8 +1,8 @@
 package com.coderych.commons.web.autoconfigure;
 
 import com.coderych.commons.web.handler.GlobalExceptionHandler;
-import com.coderych.commons.web.handler.GlobalRequestBodyAdvice;
-import com.coderych.commons.web.handler.GlobalResponseBodyAdvice;
+import com.coderych.commons.web.handler.DecryptRequestBodyAdvice;
+import com.coderych.commons.web.handler.EncryptResponseBodyAdvice;
 import org.junit.jupiter.api.Test;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.boot.autoconfigure.AutoConfigurations;
@@ -22,8 +22,8 @@ class WebAutoConfigurationTests {
     void shouldRegisterAllBeansByDefault() {
         contextRunner.run(context -> {
             assertThat(context).hasSingleBean(GlobalExceptionHandler.class);
-            assertThat(context).hasSingleBean(GlobalRequestBodyAdvice.class);
-            assertThat(context).hasSingleBean(GlobalResponseBodyAdvice.class);
+            assertThat(context).hasSingleBean(DecryptRequestBodyAdvice.class);
+            assertThat(context).hasSingleBean(EncryptResponseBodyAdvice.class);
             assertThat(context).hasSingleBean(FilterRegistrationBean.class);
             assertThat(context).hasSingleBean(WebMvcConfigurer.class);
         });
@@ -35,8 +35,8 @@ class WebAutoConfigurationTests {
                 .withPropertyValues("commons.web.enabled=false")
                 .run(context -> {
                     assertThat(context).doesNotHaveBean(GlobalExceptionHandler.class);
-                    assertThat(context).doesNotHaveBean(GlobalRequestBodyAdvice.class);
-                    assertThat(context).doesNotHaveBean(GlobalResponseBodyAdvice.class);
+                    assertThat(context).doesNotHaveBean(DecryptRequestBodyAdvice.class);
+                    assertThat(context).doesNotHaveBean(EncryptResponseBodyAdvice.class);
                     assertThat(context).doesNotHaveBean(FilterRegistrationBean.class);
                     assertThat(context).doesNotHaveBean(WebMvcConfigurer.class);
                 });
@@ -48,18 +48,18 @@ class WebAutoConfigurationTests {
                 .withPropertyValues("commons.web.exception.enabled=false")
                 .run(context -> {
                     assertThat(context).doesNotHaveBean(GlobalExceptionHandler.class);
-                    assertThat(context).hasSingleBean(GlobalRequestBodyAdvice.class);
-                    assertThat(context).hasSingleBean(GlobalResponseBodyAdvice.class);
+                    assertThat(context).hasSingleBean(DecryptRequestBodyAdvice.class);
+                    assertThat(context).hasSingleBean(EncryptResponseBodyAdvice.class);
                 });
     }
 
     @Test
-    void shouldNotRegisterCryptoBeansWhenDisabled() {
+    void shouldAlwaysRegisterCryptoBeansButDisableInternally() {
         contextRunner
                 .withPropertyValues("commons.web.crypto.enabled=false")
                 .run(context -> {
-                    assertThat(context).doesNotHaveBean(GlobalRequestBodyAdvice.class);
-                    assertThat(context).doesNotHaveBean(GlobalResponseBodyAdvice.class);
+                    assertThat(context).hasSingleBean(DecryptRequestBodyAdvice.class);
+                    assertThat(context).hasSingleBean(EncryptResponseBodyAdvice.class);
                     assertThat(context).hasSingleBean(GlobalExceptionHandler.class);
                 });
     }

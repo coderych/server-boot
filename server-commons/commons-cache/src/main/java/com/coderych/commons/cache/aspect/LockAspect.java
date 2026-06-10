@@ -23,13 +23,17 @@ public class LockAspect {
 
     @Around("@annotation(lock)")
     public Object around(ProceedingJoinPoint joinPoint, Lock lock) {
-        log.info(">>>>>>>>> LockAspect —— 分布式锁拦截: {}.{}",
+        log.debug(">>>>>>>>> LockAspect —— 分布式锁拦截: {}.{}",
                 joinPoint.getSignature().getDeclaringType().getSimpleName(), joinPoint.getSignature().getName());
         Method method = ((MethodSignature) joinPoint.getSignature()).getMethod();
         String key = SpelUtils.evaluateToString(lock.key(), method, joinPoint.getArgs());
         return LockManager.execute(lock.name(), key, () -> {
             try {
                 return joinPoint.proceed();
+            } catch (RuntimeException re) {
+                throw re;
+            } catch (Error e) {
+                throw e;
             } catch (Throwable throwable) {
                 throw new RuntimeException(throwable);
             }

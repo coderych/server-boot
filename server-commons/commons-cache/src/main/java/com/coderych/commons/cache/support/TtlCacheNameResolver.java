@@ -20,7 +20,7 @@ public final class TtlCacheNameResolver {
 
     private static volatile CacheProperties cacheProperties;
 
-    public static void init(CacheProperties cacheProperties) {
+    public static synchronized void init(CacheProperties cacheProperties) {
         if (cacheProperties == null) {
             throw new IllegalArgumentException("CacheProperties must not be null");
         }

@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 @MapperScan("com.coderych.server.**.mapper")
 public class RunApplication {
-    static void main(String[] args) {
+   public static void main(String[] args) {
         SpringApplication.run(RunApplication.class, args);
     }
 }

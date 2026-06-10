@@ -22,13 +22,13 @@ public final class HttpUtils {
     @Getter
     private static volatile RestClient restClient = RestClient.create();
 
-    public static void init(RestClient restClient) {
+    public static synchronized void init(RestClient restClient) {
         if (restClient != null) {
             HttpUtils.restClient = restClient;
         }
     }
 
-    public static void reset() {
+    public static synchronized void reset() {
         restClient = RestClient.create();
     }
 

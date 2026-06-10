@@ -10,6 +10,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * 通用查询参数基类，支持排序解析。
@@ -24,6 +25,8 @@ import java.util.List;
 public class Query implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
+
+    private static final Pattern SAFE_FIELD_PATTERN = Pattern.compile("^[a-zA-Z_][a-zA-Z0-9_]*$");
 
     private String orderBy;
 
@@ -47,7 +50,7 @@ public class Query implements Serializable {
             String[] parts = fieldOrder.trim().split("\\s+");
             String field = parts[0].trim();
 
-            if (field.isEmpty()) {
+            if (field.isEmpty() || !SAFE_FIELD_PATTERN.matcher(field).matches()) {
                 continue;
             }
 

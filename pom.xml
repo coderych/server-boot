@@ -20,9 +20,9 @@
         <!-- 项目版本号：统一管理所有模块版本，修改此处即可发布新版本 -->
         <revision>1.0-SNAPSHOT</revision>
 
-        <!-- 编译器：Java 25，UTF-8 编码 -->
-        <maven.compiler.source>25</maven.compiler.source>
-        <maven.compiler.target>25</maven.compiler.target>
+        <!-- 编译器：Java 21，UTF-8 编码 -->
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <!-- 插件版本：统一管理 Maven 插件版本，便于升级 -->
@@ -286,7 +286,7 @@
         <!-- 插件版本管理：子模块无需重复声明版本号 -->
         <pluginManagement>
             <plugins>
-                <!-- 编译插件：Java 25，配置 Lombok 和 MapStruct Plus 注解处理器 -->
+                <!-- 编译插件：Java 21，配置 Lombok 和 MapStruct Plus 注解处理器 -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>

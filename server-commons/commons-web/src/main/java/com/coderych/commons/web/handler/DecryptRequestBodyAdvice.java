@@ -29,7 +29,7 @@ import java.nio.charset.StandardCharsets;
 @Slf4j
 @RestControllerAdvice
 @RequiredArgsConstructor
-public class GlobalRequestBodyAdvice extends RequestBodyAdviceAdapter {
+public class DecryptRequestBodyAdvice extends RequestBodyAdviceAdapter {
     private final WebProperties webProperties;
 
     @Override

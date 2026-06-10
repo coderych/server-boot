@@ -3,8 +3,6 @@ package com.coderych.commons.cache.autoconfigure;
 import com.coderych.commons.cache.aspect.LockAspect;
 import com.coderych.commons.cache.init.CacheInitializerRunner;
 import com.coderych.commons.cache.support.RedisQueueTemplate;
-import com.coderych.commons.cache.support.RedisSerializerFactory;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.autoconfigure.AutoConfigurations;
 import org.springframework.boot.test.context.runner.ApplicationContextRunner;
@@ -22,11 +20,6 @@ class CacheAutoConfigurationTests {
             .withConfiguration(AutoConfigurations.of(CacheAutoConfiguration.class))
             .withBean("redisConnectionFactory", RedisConnectionFactory.class, () -> mock(RedisConnectionFactory.class))
             .withBean("cacheRedisTemplate", RedisTemplate.class, () -> mock(RedisTemplate.class));
-
-    @BeforeEach
-    void setUp() {
-        RedisSerializerFactory.init(null);
-    }
 
     @Test
     void shouldRegisterCachePropertiesBean() {

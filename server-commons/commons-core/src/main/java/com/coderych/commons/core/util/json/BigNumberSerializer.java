@@ -24,10 +24,22 @@ public class BigNumberSerializer extends NumberSerializer {
 
     @Override
     public void serialize(Number value, JsonGenerator g, SerializationContext provider) throws JacksonException {
-        if (value.longValue() > MAX_SAFE_INTEGER || value.longValue() < MIN_SAFE_INTEGER) {
+        if (isOutOfRange(value)) {
             g.writeString(value.toString());
         } else {
             super.serialize(value, g, provider);
         }
+    }
+
+    private boolean isOutOfRange(Number value) {
+        if (value instanceof java.math.BigDecimal bd) {
+            return bd.compareTo(java.math.BigDecimal.valueOf(MAX_SAFE_INTEGER)) > 0
+                    || bd.compareTo(java.math.BigDecimal.valueOf(MIN_SAFE_INTEGER)) < 0;
+        }
+        if (value instanceof java.math.BigInteger bi) {
+            return bi.compareTo(java.math.BigInteger.valueOf(MAX_SAFE_INTEGER)) > 0
+                    || bi.compareTo(java.math.BigInteger.valueOf(MIN_SAFE_INTEGER)) < 0;
+        }
+        return value.longValue() > MAX_SAFE_INTEGER || value.longValue() < MIN_SAFE_INTEGER;
     }
 }

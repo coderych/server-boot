@@ -29,14 +29,14 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class SaTokenAutoConfiguration {
 
     @Bean
-    public WebMvcConfigurer saTokenWebMvcConfigurer() {
+    public WebMvcConfigurer saTokenWebMvcConfigurer(SaTokenProperties saTokenProperties) {
         log.info(">>>>>>>>> Bean: saTokenWebMvcConfigurer —— 注册 Sa-Token 登录拦截器");
         return new WebMvcConfigurer() {
             @Override
             public void addInterceptors(InterceptorRegistry registry) {
                 registry.addInterceptor(new SaInterceptor(handle -> {
                     StpUtil.checkLogin();
-                })).addPathPatterns("/**");
+                })).addPathPatterns("/**").excludePathPatterns(saTokenProperties.getExclude());
             }
         };
     }

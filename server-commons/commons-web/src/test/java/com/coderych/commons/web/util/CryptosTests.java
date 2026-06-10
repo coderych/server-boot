@@ -9,11 +9,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CryptosTests {
 
-    @AfterEach
-    void tearDown() {
-        Cryptos.reset();
-    }
-
     @Test
     void shouldEncryptAndDecryptWithConfiguredAesAlgorithm() {
         WebProperties webProperties = new WebProperties();

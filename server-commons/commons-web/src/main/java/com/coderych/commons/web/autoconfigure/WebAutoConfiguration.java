@@ -1,8 +1,8 @@
 package com.coderych.commons.web.autoconfigure;
 
 import com.coderych.commons.web.handler.GlobalExceptionHandler;
-import com.coderych.commons.web.handler.GlobalRequestBodyAdvice;
-import com.coderych.commons.web.handler.GlobalResponseBodyAdvice;
+import com.coderych.commons.web.handler.DecryptRequestBodyAdvice;
+import com.coderych.commons.web.handler.EncryptResponseBodyAdvice;
 import com.coderych.commons.web.handler.XssFilter;
 import com.coderych.commons.web.util.Cryptos;
 import lombok.extern.slf4j.Slf4j;
@@ -49,16 +49,18 @@ public class WebAutoConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
-    public GlobalRequestBodyAdvice globalRequestBodyAdvice(WebProperties webProperties) {
-        log.info(">>>>>>>>> Bean: globalRequestBodyAdvice —— 注册请求体 Advice");
-        return new GlobalRequestBodyAdvice(webProperties);
+    @ConditionalOnProperty(prefix = "commons.web.crypto", name = "enabled", havingValue = "true", matchIfMissing = true)
+    public DecryptRequestBodyAdvice decryptRequestBodyAdvice(WebProperties webProperties) {
+        log.info(">>>>>>>>> Bean: decryptRequestBodyAdvice —— 注册请求体解密 Advice");
+        return new DecryptRequestBodyAdvice(webProperties);
     }
 
     @Bean
     @ConditionalOnMissingBean
-    public GlobalResponseBodyAdvice globalResponseBodyAdvice(WebProperties webProperties) {
-        log.info(">>>>>>>>> Bean: globalResponseBodyAdvice —— 注册响应体 Advice");
-        return new GlobalResponseBodyAdvice(webProperties);
+    @ConditionalOnProperty(prefix = "commons.web.crypto", name = "enabled", havingValue = "true", matchIfMissing = true)
+    public EncryptResponseBodyAdvice encryptResponseBodyAdvice(WebProperties webProperties) {
+        log.info(">>>>>>>>> Bean: encryptResponseBodyAdvice —— 注册响应体加密 Advice");
+        return new EncryptResponseBodyAdvice(webProperties);
     }
 
     @Bean
