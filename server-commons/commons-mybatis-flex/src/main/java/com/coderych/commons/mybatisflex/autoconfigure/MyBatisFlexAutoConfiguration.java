@@ -27,7 +27,7 @@ import java.time.LocalDateTime;
  */
 @Slf4j
 @AutoConfiguration
-@EnableConfigurationProperties(MyBatisFlexProperties.class)
+@EnableConfigurationProperties({MyBatisFlexProperties.class})
 @ConditionalOnProperty(prefix = "commons.mybatis-flex", name = "enabled", havingValue = "true", matchIfMissing = true)
 public class MyBatisFlexAutoConfiguration {
     static {
@@ -70,6 +70,10 @@ public class MyBatisFlexAutoConfiguration {
                     baseEntity.setUpdateTime(now);
                     baseEntity.setDeleted(0L);
                     baseEntity.setVersion(1);
+                    // 自动填充租户 ID
+                    if (baseEntity.getTenantId() == null) {
+                        baseEntity.setTenantId(LoginUser.getLoginTenantId());
+                    }
                 }
             });
 

@@ -34,7 +34,27 @@ public enum ResultCode {
     DATA_VALIDATION_ERROR(2003, "数据验证失败"),
     SYSTEM_BUSY(3001, "系统繁忙，请稍后重试"),
     OPERATION_FAILED(3002, "操作失败"),
-    PERMISSION_DENIED(3003, "权限不足");
+    PERMISSION_DENIED(3003, "权限不足"),
+
+    // 租户相关
+    TENANT_NOT_FOUND(6001, "租户不存在"),
+    TENANT_DISABLED(6002, "租户已禁用"),
+    TENANT_EXPIRED(6003, "租户已过期"),
+
+    // 业务校验
+    ROLE_IN_USE(6011, "角色已被使用，无法删除"),
+    MENU_HAS_CHILDREN(6012, "存在子菜单，无法删除"),
+    DEPT_HAS_CHILDREN(6013, "存在子部门，无法删除"),
+    DEPT_HAS_USERS(6014, "部门下存在用户，无法删除"),
+
+    // 认证相关
+    CAPTCHA_ERROR(6021, "验证码错误"),
+    REGISTER_DISABLED(6022, "注册功能已关闭"),
+    OLD_PASSWORD_ERROR(6023, "原密码错误"),
+
+    // 操作限制
+    CANNOT_DELETE_SELF(6031, "不能删除当前登录用户"),
+    CANNOT_MODIFY_SUPER_ADMIN(6032, "不允许操作超级管理员");
 
     private final int code;
     private final String message;

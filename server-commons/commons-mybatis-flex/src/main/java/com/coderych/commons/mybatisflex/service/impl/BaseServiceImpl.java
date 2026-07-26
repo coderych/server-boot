@@ -61,7 +61,7 @@ public class BaseServiceImpl<M extends BaseMapper<E>, E, Q, F, D> extends Servic
         onInsertOrUpdateBefore(form, true);
         E entity = BEAN.convert(form, eClass);
         mapper.insert(entity);
-        onInsertOrUpdateAfter(entity, true);
+        onInsertOrUpdateAfter(entity, form, true);
     }
 
     @Override
@@ -69,7 +69,7 @@ public class BaseServiceImpl<M extends BaseMapper<E>, E, Q, F, D> extends Servic
         onInsertOrUpdateBefore(form, false);
         E entity = BEAN.convert(form, eClass);
         mapper.update(entity);
-        onInsertOrUpdateAfter(entity, false);
+        onInsertOrUpdateAfter(entity, form, false);
     }
 
     @Override
@@ -101,7 +101,7 @@ public class BaseServiceImpl<M extends BaseMapper<E>, E, Q, F, D> extends Servic
     /**
      * 新增/更新后置钩子，子类可重写以实现关联数据处理等逻辑。
      */
-    protected void onInsertOrUpdateAfter(E entity, boolean isSave) {
+    protected void onInsertOrUpdateAfter(E entity, F form, boolean isSave) {
     }
 
     /**

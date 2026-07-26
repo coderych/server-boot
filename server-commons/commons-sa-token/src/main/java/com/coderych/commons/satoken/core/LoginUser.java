@@ -21,13 +21,13 @@ import java.util.concurrent.atomic.AtomicBoolean;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class LoginUser {
     private static final AtomicBoolean INITIALIZED = new AtomicBoolean(false);
-    private static volatile String TOKEN_NAME;
-    private static volatile String LOGIN_USERNAME_CACHE_KEY;
-    private static volatile String LOGIN_TENANT_CACHE_KEY;
-    private static volatile String LOGIN_USER_CACHE_KEY;
-    private static volatile String LOGIN_USER_FIND_ROLE_CACHE_KEY;
-    private static volatile String LOGIN_ROLE_FIND_PERMISSION_CACHE_KEY;
-    private static volatile List<String> SUPER_ADMINS;
+    public static volatile String TOKEN_NAME;
+    public static volatile String LOGIN_USERNAME_CACHE_KEY;
+    public static volatile String LOGIN_TENANT_CACHE_KEY;
+    public static volatile String LOGIN_USER_CACHE_KEY;
+    public static volatile String LOGIN_USER_FIND_ROLE_CACHE_KEY;
+    public static volatile String LOGIN_ROLE_FIND_PERMISSION_CACHE_KEY;
+    public static volatile List<String> SUPER_ADMINS;
 
     /**
      * 初始化登录用户模块，使用 CAS 保证仅执行一次。
@@ -78,6 +78,15 @@ public final class LoginUser {
 
     public static String getLoginTenantId() {
         return SaManager.getSaTokenDao().get(LOGIN_TENANT_CACHE_KEY + getLoginUserId());
+    }
+
+    public static String getLoginTenantIdOrDefault(String defaultValue) {
+        try {
+            String tenantId = getLoginTenantId();
+            return tenantId == null ? defaultValue : tenantId;
+        } catch (Exception exception) {
+            return defaultValue;
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -147,6 +156,10 @@ public final class LoginUser {
         if (!isSuperAdmin(getLoginUsername())) {
             StpUtil.checkRoleOr(roles);
         }
+    }
+
+    public static boolean isSuperAdmin() {
+        return isSuperAdmin(getLoginUsername());
     }
 
     public static boolean isSuperAdmin(String username) {

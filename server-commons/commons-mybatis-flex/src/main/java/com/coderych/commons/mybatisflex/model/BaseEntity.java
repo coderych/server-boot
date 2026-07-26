@@ -15,6 +15,8 @@ import java.time.LocalDateTime;
 public abstract class BaseEntity {
     private String id;
 
+    private String tenantId;
+
     private String creator;
 
     private LocalDateTime createTime;

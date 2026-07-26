@@ -4,6 +4,7 @@ import com.coderych.commons.core.model.P;
 import com.coderych.commons.core.model.PageQuery;
 import com.coderych.commons.core.model.Query;
 import com.coderych.commons.core.model.R;
+import com.coderych.commons.mybatisflex.enums.Api;
 import com.coderych.commons.mybatisflex.service.BaseService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,35 +30,43 @@ public abstract class BaseController<S extends BaseService<E, Q, F, D>, E, Q, F,
 
     @GetMapping("/page")
     public R<P<D>> page(Q q, PageQuery pageQuery) {
+        checkPermission(Api.PAGE);
         return R.ok(service.page(q, pageQuery));
     }
 
     @GetMapping
     public R<List<D>> list(Q query, Query baseQuery) {
+        checkPermission(Api.LIST);
         return R.ok(service.list(query, baseQuery));
     }
 
     @GetMapping("/{id}")
     public R<D> getById(@PathVariable Serializable id) {
+        checkPermission(Api.GET);
         return R.ok(service.selectById(id));
     }
 
     @PostMapping
     public R<?> save(@Valid @RequestBody F form) {
+        checkPermission(Api.SAVE);
         service.insert(form);
         return R.ok();
     }
 
     @PutMapping
     public R<?> updateById(@Valid @RequestBody F form) {
+        checkPermission(Api.UPDATE);
         service.update(form);
         return R.ok();
     }
 
     @DeleteMapping("/{id}")
     public R<?> removeById(@PathVariable Serializable id) {
+        checkPermission(Api.REMOVE);
         service.deleteById(id);
         return R.ok();
     }
 
+    protected void checkPermission(Api api) {
+    }
 }
