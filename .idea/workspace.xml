@@ -4,16 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e7bc3544-ec3e-40e3-b5cd-278280c26959" name="更改" comment="feat(system): 添加多租户支持和系统架构优化&#10;&#10;- 在 BaseEntity 中新增 tenantId 字段以支持多租户数据隔离&#10;- 配置 application-dev.yml 中的租户、注册和验证码开关选项&#10;- 实现租户上下文自动填充逻辑，确保数据操作时自动设置租户ID&#10;- 扩展 ResultCode 枚举类，添加租户、业务校验、认证和操作限制相关的错误码&#10;- 更新数据库 schema，添加完整的多租户系统表结构，包括租户、角色、权限、部门等核心表&#10;- 新增租户套餐管理、用户角色关联、部门岗位等相关数据表&#10;- 添加系统配置、通知公告、定时任务、日志和文件管理等模块的表结构&#10;- 初始化默认租户、角色和管理员用户的初始数据&#10;- 配置 Sa-Token 的超级管理员账户列表">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server-commons/commons-core/src/main/java/com/coderych/commons/core/enums/ResultCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-core/src/main/java/com/coderych/commons/core/enums/ResultCode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server-commons/commons-mybatis-flex/src/main/java/com/coderych/commons/mybatisflex/autoconfigure/MyBatisFlexAutoConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-mybatis-flex/src/main/java/com/coderych/commons/mybatisflex/autoconfigure/MyBatisFlexAutoConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server-commons/commons-mybatis-flex/src/main/java/com/coderych/commons/mybatisflex/controller/BaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-mybatis-flex/src/main/java/com/coderych/commons/mybatisflex/controller/BaseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server-commons/commons-mybatis-flex/src/main/java/com/coderych/commons/mybatisflex/model/BaseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-mybatis-flex/src/main/java/com/coderych/commons/mybatisflex/model/BaseEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server-commons/commons-mybatis-flex/src/main/java/com/coderych/commons/mybatisflex/service/impl/BaseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-mybatis-flex/src/main/java/com/coderych/commons/mybatisflex/service/impl/BaseServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server-commons/commons-sa-token/src/main/java/com/coderych/commons/satoken/core/LoginUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-sa-token/src/main/java/com/coderych/commons/satoken/core/LoginUser.java" afterDir="false" />
+    <list default="true" id="e7bc3544-ec3e-40e3-b5cd-278280c26959" name="更改" comment="style(common): 为实体类和元数据模型添加字段注释&#10;&#10;- 为BaseEntity类的id、tenantId、creator等字段添加中文注释&#10;- 为ColumnMetadata类的columnName、typeName、columnSize等字段添加详细注释&#10;- 为Condition类的key、value、operator等字段补充功能说明注释&#10;- 为TableMetadata类的tableName、remarks、columns字段添加文档注释&#10;- 调整部分代码的import顺序和缩进格式&#10;- 修复SensitiveValueMasker中代码缩进问题">
       <change beforePath="$PROJECT_DIR$/server-module-system/src/main/resources/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/server-module-system/src/main/resources/schema.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server-start/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/server-start/src/main/resources/application-dev.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +50,7 @@
     &quot;project.structure.last.edited&quot;: &quot;项目&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;terminal&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -86,8 +78,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-30f59d01ecdd-37e91769500f-intellij.indexing.shared.core-IU-261.25134.95" />
-        <option value="bundled-js-predefined-d6986cc7102b-31caf2ab9e3c-JavaScript-IU-261.25134.95" />
+        <option value="bundled-jdk-30f59d01ecdd-37e91769500f-intellij.indexing.shared.core-IU-261.26222.65" />
+        <option value="bundled-js-predefined-d6986cc7102b-31caf2ab9e3c-JavaScript-IU-261.26222.65" />
       </set>
     </attachedChunks>
   </component>
@@ -102,6 +94,23 @@
       <workItem from="1778396771472" duration="34000" />
       <workItem from="1784634490408" duration="7000" />
     </task>
+    <task id="LOCAL-00001" summary="feat(tenant): 实现多租户系统架构并完善权限管理&#10;&#10;- 在BaseController中添加API权限检查机制&#10;- 为BaseEntity增加tenantId字段支持多租户数据隔离&#10;- 修改BaseServiceImpl中的钩子方法以支持表单参数传递&#10;- 将LoginUser中的静态字段改为public访问并新增租户相关方法&#10;- 在MyBatisFlexAutoConfiguration中实现租户ID自动填充&#10;- 扩展ResultCode枚举添加租户、业务校验、认证等错误码&#10;- 重构数据库schema.sql脚本实现完整的多租户表结构设计">
+      <option name="closed" value="true" />
+      <created>1785066725596</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1785066725596</updated>
+    </task>
+    <task id="LOCAL-00002" summary="style(common): 为实体类和元数据模型添加字段注释&#10;&#10;- 为BaseEntity类的id、tenantId、creator等字段添加中文注释&#10;- 为ColumnMetadata类的columnName、typeName、columnSize等字段添加详细注释&#10;- 为Condition类的key、value、operator等字段补充功能说明注释&#10;- 为TableMetadata类的tableName、remarks、columns字段添加文档注释&#10;- 调整部分代码的import顺序和缩进格式&#10;- 修复SensitiveValueMasker中代码缩进问题">
+      <option name="closed" value="true" />
+      <created>1785498124763</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1785498124764</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -130,6 +139,11 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="feat(tenant): 实现多租户系统架构并完善权限管理&#10;&#10;- 在BaseController中添加API权限检查机制&#10;- 为BaseEntity增加tenantId字段支持多租户数据隔离&#10;- 修改BaseServiceImpl中的钩子方法以支持表单参数传递&#10;- 将LoginUser中的静态字段改为public访问并新增租户相关方法&#10;- 在MyBatisFlexAutoConfiguration中实现租户ID自动填充&#10;- 扩展ResultCode枚举添加租户、业务校验、认证等错误码&#10;- 重构数据库schema.sql脚本实现完整的多租户表结构设计" />
+    <MESSAGE value="style(common): 为实体类和元数据模型添加字段注释&#10;&#10;- 为BaseEntity类的id、tenantId、creator等字段添加中文注释&#10;- 为ColumnMetadata类的columnName、typeName、columnSize等字段添加详细注释&#10;- 为Condition类的key、value、operator等字段补充功能说明注释&#10;- 为TableMetadata类的tableName、remarks、columns字段添加文档注释&#10;- 调整部分代码的import顺序和缩进格式&#10;- 修复SensitiveValueMasker中代码缩进问题" />
+    <option name="LAST_COMMIT_MESSAGE" value="style(common): 为实体类和元数据模型添加字段注释&#10;&#10;- 为BaseEntity类的id、tenantId、creator等字段添加中文注释&#10;- 为ColumnMetadata类的columnName、typeName、columnSize等字段添加详细注释&#10;- 为Condition类的key、value、operator等字段补充功能说明注释&#10;- 为TableMetadata类的tableName、remarks、columns字段添加文档注释&#10;- 调整部分代码的import顺序和缩进格式&#10;- 修复SensitiveValueMasker中代码缩进问题" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

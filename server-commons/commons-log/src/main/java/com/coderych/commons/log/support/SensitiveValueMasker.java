@@ -24,8 +24,8 @@ public class SensitiveValueMasker {
         this.sensitiveFields = CollectionUtils.isEmpty(properties.getSensitiveFields())
                 ? Set.of()
                 : properties.getSensitiveFields().stream()
-                  .map(this::normalize)
-                  .collect(Collectors.toUnmodifiableSet());
+                .map(this::normalize)
+                .collect(Collectors.toUnmodifiableSet());
     }
 
     public Object mask(Object value) {

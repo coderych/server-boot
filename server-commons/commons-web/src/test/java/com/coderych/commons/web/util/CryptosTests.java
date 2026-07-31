@@ -2,7 +2,6 @@ package com.coderych.commons.web.util;
 
 import com.coderych.commons.web.autoconfigure.WebProperties;
 import com.coderych.commons.web.enums.CryptoAlgorithmType;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

@@ -1,7 +1,7 @@
 package com.coderych.commons.mybatisflex.autoconfigure;
 
-import com.coderych.commons.mybatisflex.model.BaseEntity;
 import com.coderych.commons.mybatisflex.aspect.CrudApiAspect;
+import com.coderych.commons.mybatisflex.model.BaseEntity;
 import com.coderych.commons.mybatisflex.service.DatabaseMetadataService;
 import com.coderych.commons.satoken.core.LoginUser;
 import com.mybatisflex.core.audit.AuditManager;

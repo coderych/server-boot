@@ -2,8 +2,8 @@ package com.coderych.commons.mybatisflex.aspect;
 
 import com.coderych.commons.core.exception.BadRequestException;
 import com.coderych.commons.mybatisflex.annotation.CrudApi;
-import lombok.extern.slf4j.Slf4j;
 import com.coderych.commons.mybatisflex.enums.Api;
+import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;

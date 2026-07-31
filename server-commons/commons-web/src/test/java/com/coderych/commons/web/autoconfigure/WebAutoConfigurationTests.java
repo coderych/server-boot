@@ -1,13 +1,13 @@
 package com.coderych.commons.web.autoconfigure;
 
-import com.coderych.commons.web.handler.GlobalExceptionHandler;
 import com.coderych.commons.web.handler.DecryptRequestBodyAdvice;
 import com.coderych.commons.web.handler.EncryptResponseBodyAdvice;
+import com.coderych.commons.web.handler.GlobalExceptionHandler;
 import org.junit.jupiter.api.Test;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.boot.autoconfigure.AutoConfigurations;
 import org.springframework.boot.test.context.runner.WebApplicationContextRunner;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import tools.jackson.databind.json.JsonMapper;
 
 import static org.assertj.core.api.Assertions.assertThat;
