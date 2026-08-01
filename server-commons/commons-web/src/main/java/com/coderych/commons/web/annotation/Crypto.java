@@ -14,10 +14,18 @@ import java.lang.annotation.Target;
 @Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Crypto {
-
+    /**
+     * 请求解密
+     */
     boolean decrypt() default true;
 
+    /**
+     * 响应加密
+     */
     boolean encrypt() default true;
 
+    /**
+     * 加密算法
+     */
     String algorithm();
 }

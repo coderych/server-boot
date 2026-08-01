@@ -1,18 +1,15 @@
 package com.coderych.commons.web.autoconfigure;
 
-import com.coderych.commons.web.enums.CryptoAlgorithmType;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Web 模块配置属性，对应配置前缀 {@code commons.web}。
- * <p>包含异常处理、加解密、XSS 防护和 CORS 四个子配置。</p>
+ * <p>包含异常处理、XSS 防护和 CORS 三个子配置（接口加解密由业务实现 {@code CryptoService} 决定，不再读取配置）。</p>
  *
  * @author YCH
  */
@@ -25,8 +22,6 @@ public class WebProperties {
 
     private Exception exception = new Exception();
 
-    private Crypto crypto = new Crypto();
-
     private Xss xss = new Xss();
 
     private Cors cors = new Cors();
@@ -35,37 +30,6 @@ public class WebProperties {
     @Setter
     public static class Exception {
         private boolean enabled = true;
-    }
-
-    @Getter
-    @Setter
-    public static class Crypto {
-        private boolean enabled = true;
-
-        private String defaultContentType = "text/plain;charset=UTF-8";
-
-        private Map<String, CryptoAlgorithm> algorithms = new HashMap<>();
-    }
-
-    @Getter
-    @Setter
-    public static class CryptoAlgorithm {
-
-        private CryptoAlgorithmType type;
-
-        private String mode;
-
-        private String padding;
-
-        private String key;
-
-        private String iv;
-
-        private String privateKey;
-
-        private String publicKey;
-
-        private String encoding = "BASE64";
     }
 
     @Getter

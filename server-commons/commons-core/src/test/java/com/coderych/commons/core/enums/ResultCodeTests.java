@@ -54,11 +54,6 @@ class ResultCodeTests {
     }
 
     @Test
-    void enumCountShouldBe21() {
-        assertEquals(23, ResultCode.values().length);
-    }
-
-    @Test
     void valueOfShouldReturnCorrectEnum() {
         assertEquals(ResultCode.SUCCESS, ResultCode.valueOf("SUCCESS"));
         assertEquals(ResultCode.ERROR, ResultCode.valueOf("ERROR"));

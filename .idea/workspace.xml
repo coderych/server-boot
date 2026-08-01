@@ -5,7 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e7bc3544-ec3e-40e3-b5cd-278280c26959" name="更改" comment="style(common): 为实体类和元数据模型添加字段注释&#10;&#10;- 为BaseEntity类的id、tenantId、creator等字段添加中文注释&#10;- 为ColumnMetadata类的columnName、typeName、columnSize等字段添加详细注释&#10;- 为Condition类的key、value、operator等字段补充功能说明注释&#10;- 为TableMetadata类的tableName、remarks、columns字段添加文档注释&#10;- 调整部分代码的import顺序和缩进格式&#10;- 修复SensitiveValueMasker中代码缩进问题">
-      <change beforePath="$PROJECT_DIR$/server-module-system/src/main/resources/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/server-module-system/src/main/resources/schema.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-core/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-core/src/test/java/com/coderych/commons/core/enums/ResultCodeTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-core/src/test/java/com/coderych/commons/core/enums/ResultCodeTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-web/src/main/java/com/coderych/commons/web/annotation/Crypto.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-web/src/main/java/com/coderych/commons/web/annotation/Crypto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-web/src/main/java/com/coderych/commons/web/autoconfigure/WebAutoConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-web/src/main/java/com/coderych/commons/web/autoconfigure/WebAutoConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-web/src/main/java/com/coderych/commons/web/autoconfigure/WebProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-web/src/main/java/com/coderych/commons/web/autoconfigure/WebProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-web/src/main/java/com/coderych/commons/web/enums/CryptoAlgorithmType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-web/src/main/java/com/coderych/commons/web/handler/DecryptRequestBodyAdvice.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-web/src/main/java/com/coderych/commons/web/handler/DecryptRequestBodyAdvice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-web/src/main/java/com/coderych/commons/web/handler/EncryptResponseBodyAdvice.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-web/src/main/java/com/coderych/commons/web/handler/EncryptResponseBodyAdvice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-web/src/main/java/com/coderych/commons/web/util/Cryptos.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-web/src/test/java/com/coderych/commons/web/autoconfigure/WebAutoConfigurationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-web/src/test/java/com/coderych/commons/web/autoconfigure/WebAutoConfigurationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-web/src/test/java/com/coderych/commons/web/autoconfigure/WebPropertiesTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-web/src/test/java/com/coderych/commons/web/autoconfigure/WebPropertiesTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-web/src/test/java/com/coderych/commons/web/util/CryptosTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-start/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/server-start/src/main/resources/application-dev.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,27 +46,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Maven.server [clean].executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;Spring Boot.RunApplication.executor&quot;: &quot;Run&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Workspace/YCH/server-boot&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;项目&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;terminal&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Maven.server [clean].executor": "Run",
+    "Maven.server [test].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "Spring Boot.RunApplication.executor": "Run",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/Workspace/YCH/server-boot",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "项目",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "terminal",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="RunApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UnknownPolicyInFreeMode" />
@@ -110,7 +124,15 @@
       <option name="project" value="LOCAL" />
       <updated>1785498124764</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="style(common): 为实体类和元数据模型添加字段注释&#10;&#10;- 为BaseEntity类的id、tenantId、creator等字段添加中文注释&#10;- 为ColumnMetadata类的columnName、typeName、columnSize等字段添加详细注释&#10;- 为Condition类的key、value、operator等字段补充功能说明注释&#10;- 为TableMetadata类的tableName、remarks、columns字段添加文档注释&#10;- 调整部分代码的import顺序和缩进格式&#10;- 修复SensitiveValueMasker中代码缩进问题">
+      <option name="closed" value="true" />
+      <created>1785498388051</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1785498388051</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -142,6 +164,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat(tenant): 实现多租户系统架构并完善权限管理&#10;&#10;- 在BaseController中添加API权限检查机制&#10;- 为BaseEntity增加tenantId字段支持多租户数据隔离&#10;- 修改BaseServiceImpl中的钩子方法以支持表单参数传递&#10;- 将LoginUser中的静态字段改为public访问并新增租户相关方法&#10;- 在MyBatisFlexAutoConfiguration中实现租户ID自动填充&#10;- 扩展ResultCode枚举添加租户、业务校验、认证等错误码&#10;- 重构数据库schema.sql脚本实现完整的多租户表结构设计" />
+    <MESSAGE value="style(database): 格式化数据库表结构定义&#10;&#10;- 统一数据库表字段类型的大小写格式&#10;- 调整表结构定义中的缩进和对齐格式&#10;- 规范化VARCHAR、INT、TINYINT等数据类型的书写格式&#10;- 优化表定义中的换行和空格布局&#10;- 统一数据库表注释的格式风格" />
     <MESSAGE value="style(common): 为实体类和元数据模型添加字段注释&#10;&#10;- 为BaseEntity类的id、tenantId、creator等字段添加中文注释&#10;- 为ColumnMetadata类的columnName、typeName、columnSize等字段添加详细注释&#10;- 为Condition类的key、value、operator等字段补充功能说明注释&#10;- 为TableMetadata类的tableName、remarks、columns字段添加文档注释&#10;- 调整部分代码的import顺序和缩进格式&#10;- 修复SensitiveValueMasker中代码缩进问题" />
     <option name="LAST_COMMIT_MESSAGE" value="style(common): 为实体类和元数据模型添加字段注释&#10;&#10;- 为BaseEntity类的id、tenantId、creator等字段添加中文注释&#10;- 为ColumnMetadata类的columnName、typeName、columnSize等字段添加详细注释&#10;- 为Condition类的key、value、operator等字段补充功能说明注释&#10;- 为TableMetadata类的tableName、remarks、columns字段添加文档注释&#10;- 调整部分代码的import顺序和缩进格式&#10;- 修复SensitiveValueMasker中代码缩进问题" />
   </component>

@@ -54,9 +54,8 @@ class WebAutoConfigurationTests {
     }
 
     @Test
-    void shouldAlwaysRegisterCryptoBeansButDisableInternally() {
+    void shouldAlwaysRegisterCryptoAdvicesWithoutCryptoService() {
         contextRunner
-                .withPropertyValues("commons.web.crypto.enabled=false")
                 .run(context -> {
                     assertThat(context).hasSingleBean(DecryptRequestBodyAdvice.class);
                     assertThat(context).hasSingleBean(EncryptResponseBodyAdvice.class);
@@ -91,7 +90,6 @@ class WebAutoConfigurationTests {
             WebProperties properties = context.getBean(WebProperties.class);
             assertThat(properties.isEnabled()).isTrue();
             assertThat(properties.getException().isEnabled()).isTrue();
-            assertThat(properties.getCrypto().isEnabled()).isTrue();
             assertThat(properties.getXss().isEnabled()).isTrue();
             assertThat(properties.getCors().isEnabled()).isTrue();
         });

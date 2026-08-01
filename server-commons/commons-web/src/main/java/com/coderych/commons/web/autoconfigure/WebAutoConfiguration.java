@@ -1,12 +1,12 @@
 package com.coderych.commons.web.autoconfigure;
 
+import com.coderych.commons.web.crypto.CryptoService;
 import com.coderych.commons.web.handler.DecryptRequestBodyAdvice;
 import com.coderych.commons.web.handler.EncryptResponseBodyAdvice;
 import com.coderych.commons.web.handler.GlobalExceptionHandler;
 import com.coderych.commons.web.handler.XssFilter;
-import com.coderych.commons.web.util.Cryptos;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.SmartInitializingSingleton;
+import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -30,14 +30,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @ConditionalOnWebApplication
 @ConditionalOnProperty(prefix = "commons.web", name = "enabled", havingValue = "true", matchIfMissing = true)
 public class WebAutoConfiguration {
-    @Bean
-    public SmartInitializingSingleton webModuleInitializer(WebProperties webProperties) {
-        return () -> {
-            log.info(">>>>>>>>> Bean: webModuleInitializer —— 初始化 Web 模块（加解密工具）");
-            Cryptos.init(webProperties);
-        };
-    }
-
 
     @Bean
     @ConditionalOnMissingBean
@@ -49,18 +41,16 @@ public class WebAutoConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
-    @ConditionalOnProperty(prefix = "commons.web.crypto", name = "enabled", havingValue = "true", matchIfMissing = true)
-    public DecryptRequestBodyAdvice decryptRequestBodyAdvice(WebProperties webProperties) {
+    public DecryptRequestBodyAdvice decryptRequestBodyAdvice(WebProperties webProperties, ObjectProvider<CryptoService> cryptoServiceProvider) {
         log.info(">>>>>>>>> Bean: decryptRequestBodyAdvice —— 注册请求体解密 Advice");
-        return new DecryptRequestBodyAdvice(webProperties);
+        return new DecryptRequestBodyAdvice(webProperties, cryptoServiceProvider);
     }
 
     @Bean
     @ConditionalOnMissingBean
-    @ConditionalOnProperty(prefix = "commons.web.crypto", name = "enabled", havingValue = "true", matchIfMissing = true)
-    public EncryptResponseBodyAdvice encryptResponseBodyAdvice(WebProperties webProperties) {
+    public EncryptResponseBodyAdvice encryptResponseBodyAdvice(ObjectProvider<CryptoService> cryptoServiceProvider) {
         log.info(">>>>>>>>> Bean: encryptResponseBodyAdvice —— 注册响应体加密 Advice");
-        return new EncryptResponseBodyAdvice(webProperties);
+        return new EncryptResponseBodyAdvice(cryptoServiceProvider);
     }
 
     @Bean
