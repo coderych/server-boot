@@ -4,20 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e7bc3544-ec3e-40e3-b5cd-278280c26959" name="更改" comment="style(common): 为实体类和元数据模型添加字段注释&#10;&#10;- 为BaseEntity类的id、tenantId、creator等字段添加中文注释&#10;- 为ColumnMetadata类的columnName、typeName、columnSize等字段添加详细注释&#10;- 为Condition类的key、value、operator等字段补充功能说明注释&#10;- 为TableMetadata类的tableName、remarks、columns字段添加文档注释&#10;- 调整部分代码的import顺序和缩进格式&#10;- 修复SensitiveValueMasker中代码缩进问题">
+    <list default="true" id="e7bc3544-ec3e-40e3-b5cd-278280c26959" name="更改" comment="refactor(web): 重构加密解密功能为可扩展服务接口&#10;&#10;- 移除应用配置文件中的加密算法配置项&#10;- 将Cryptos工具类重构为CryptoService接口供业务实现&#10;- 更新加密解密注解Crypto添加encrypt属性和算法参数&#10;- 修改请求体解密Advice改为依赖CryptoService实现&#10;- 修改响应体加密Advice改为依赖CryptoService实现&#10;- 删除加密算法类型枚举和相关测试代码&#10;- 在core模块添加Bouncy Castle安全算法库依赖&#10;- 移除WebProperties中的加密配置相关属性&#10;- 更新自动配置类移除加密工具初始化逻辑&#10;- 调整测试用例适配新的加密解密实现方式">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server-commons/commons-core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-core/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server-commons/commons-core/src/test/java/com/coderych/commons/core/enums/ResultCodeTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-core/src/test/java/com/coderych/commons/core/enums/ResultCodeTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server-commons/commons-web/src/main/java/com/coderych/commons/web/annotation/Crypto.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-web/src/main/java/com/coderych/commons/web/annotation/Crypto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server-commons/commons-web/src/main/java/com/coderych/commons/web/autoconfigure/WebAutoConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-web/src/main/java/com/coderych/commons/web/autoconfigure/WebAutoConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server-commons/commons-web/src/main/java/com/coderych/commons/web/autoconfigure/WebProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-web/src/main/java/com/coderych/commons/web/autoconfigure/WebProperties.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server-commons/commons-web/src/main/java/com/coderych/commons/web/enums/CryptoAlgorithmType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server-commons/commons-web/src/main/java/com/coderych/commons/web/handler/DecryptRequestBodyAdvice.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-web/src/main/java/com/coderych/commons/web/handler/DecryptRequestBodyAdvice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server-commons/commons-web/src/main/java/com/coderych/commons/web/handler/EncryptResponseBodyAdvice.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-web/src/main/java/com/coderych/commons/web/handler/EncryptResponseBodyAdvice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server-commons/commons-web/src/main/java/com/coderych/commons/web/util/Cryptos.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server-commons/commons-web/src/test/java/com/coderych/commons/web/autoconfigure/WebAutoConfigurationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-web/src/test/java/com/coderych/commons/web/autoconfigure/WebAutoConfigurationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server-commons/commons-web/src/test/java/com/coderych/commons/web/autoconfigure/WebPropertiesTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-web/src/test/java/com/coderych/commons/web/autoconfigure/WebPropertiesTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server-commons/commons-web/src/test/java/com/coderych/commons/web/util/CryptosTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-module-system/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/server-module-system/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-module-system/src/main/resources/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/server-module-system/src/main/resources/schema.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-start/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/server-start/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-start/src/main/java/com/coderych/server/RunApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-start/src/main/java/com/coderych/server/RunApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server-start/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/server-start/src/main/resources/application-dev.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -64,7 +56,7 @@
     "project.structure.last.edited": "项目",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "terminal",
+    "settings.editor.selected.configurable": "configurable.group.language",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -132,7 +124,15 @@
       <option name="project" value="LOCAL" />
       <updated>1785498388051</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="refactor(web): 重构加密解密功能为可扩展服务接口&#10;&#10;- 移除应用配置文件中的加密算法配置项&#10;- 将Cryptos工具类重构为CryptoService接口供业务实现&#10;- 更新加密解密注解Crypto添加encrypt属性和算法参数&#10;- 修改请求体解密Advice改为依赖CryptoService实现&#10;- 修改响应体加密Advice改为依赖CryptoService实现&#10;- 删除加密算法类型枚举和相关测试代码&#10;- 在core模块添加Bouncy Castle安全算法库依赖&#10;- 移除WebProperties中的加密配置相关属性&#10;- 更新自动配置类移除加密工具初始化逻辑&#10;- 调整测试用例适配新的加密解密实现方式">
+      <option name="closed" value="true" />
+      <created>1785568326711</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1785568326711</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -166,7 +166,8 @@
     <MESSAGE value="feat(tenant): 实现多租户系统架构并完善权限管理&#10;&#10;- 在BaseController中添加API权限检查机制&#10;- 为BaseEntity增加tenantId字段支持多租户数据隔离&#10;- 修改BaseServiceImpl中的钩子方法以支持表单参数传递&#10;- 将LoginUser中的静态字段改为public访问并新增租户相关方法&#10;- 在MyBatisFlexAutoConfiguration中实现租户ID自动填充&#10;- 扩展ResultCode枚举添加租户、业务校验、认证等错误码&#10;- 重构数据库schema.sql脚本实现完整的多租户表结构设计" />
     <MESSAGE value="style(database): 格式化数据库表结构定义&#10;&#10;- 统一数据库表字段类型的大小写格式&#10;- 调整表结构定义中的缩进和对齐格式&#10;- 规范化VARCHAR、INT、TINYINT等数据类型的书写格式&#10;- 优化表定义中的换行和空格布局&#10;- 统一数据库表注释的格式风格" />
     <MESSAGE value="style(common): 为实体类和元数据模型添加字段注释&#10;&#10;- 为BaseEntity类的id、tenantId、creator等字段添加中文注释&#10;- 为ColumnMetadata类的columnName、typeName、columnSize等字段添加详细注释&#10;- 为Condition类的key、value、operator等字段补充功能说明注释&#10;- 为TableMetadata类的tableName、remarks、columns字段添加文档注释&#10;- 调整部分代码的import顺序和缩进格式&#10;- 修复SensitiveValueMasker中代码缩进问题" />
-    <option name="LAST_COMMIT_MESSAGE" value="style(common): 为实体类和元数据模型添加字段注释&#10;&#10;- 为BaseEntity类的id、tenantId、creator等字段添加中文注释&#10;- 为ColumnMetadata类的columnName、typeName、columnSize等字段添加详细注释&#10;- 为Condition类的key、value、operator等字段补充功能说明注释&#10;- 为TableMetadata类的tableName、remarks、columns字段添加文档注释&#10;- 调整部分代码的import顺序和缩进格式&#10;- 修复SensitiveValueMasker中代码缩进问题" />
+    <MESSAGE value="refactor(web): 重构加密解密功能为可扩展服务接口&#10;&#10;- 移除应用配置文件中的加密算法配置项&#10;- 将Cryptos工具类重构为CryptoService接口供业务实现&#10;- 更新加密解密注解Crypto添加encrypt属性和算法参数&#10;- 修改请求体解密Advice改为依赖CryptoService实现&#10;- 修改响应体加密Advice改为依赖CryptoService实现&#10;- 删除加密算法类型枚举和相关测试代码&#10;- 在core模块添加Bouncy Castle安全算法库依赖&#10;- 移除WebProperties中的加密配置相关属性&#10;- 更新自动配置类移除加密工具初始化逻辑&#10;- 调整测试用例适配新的加密解密实现方式" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor(web): 重构加密解密功能为可扩展服务接口&#10;&#10;- 移除应用配置文件中的加密算法配置项&#10;- 将Cryptos工具类重构为CryptoService接口供业务实现&#10;- 更新加密解密注解Crypto添加encrypt属性和算法参数&#10;- 修改请求体解密Advice改为依赖CryptoService实现&#10;- 修改响应体加密Advice改为依赖CryptoService实现&#10;- 删除加密算法类型枚举和相关测试代码&#10;- 在core模块添加Bouncy Castle安全算法库依赖&#10;- 移除WebProperties中的加密配置相关属性&#10;- 更新自动配置类移除加密工具初始化逻辑&#10;- 调整测试用例适配新的加密解密实现方式" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
