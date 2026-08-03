@@ -3,6 +3,8 @@ package com.coderych.commons.mybatisflex.service.impl;
 import com.coderych.commons.core.model.P;
 import com.coderych.commons.core.model.PageQuery;
 import com.coderych.commons.core.model.Query;
+import com.coderych.commons.core.enums.ResultCode;
+import com.coderych.commons.core.exception.BizException;
 import com.coderych.commons.core.util.BEAN;
 import com.coderych.commons.core.util.object.ClassUtils;
 import com.coderych.commons.mybatisflex.service.BaseService;
@@ -11,8 +13,10 @@ import com.coderych.commons.mybatisflex.util.QueryWrapperBuilder;
 import com.mybatisflex.core.BaseMapper;
 import com.mybatisflex.core.query.QueryWrapper;
 import com.mybatisflex.spring.service.impl.ServiceImpl;
+import org.springframework.util.StringUtils;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -90,6 +94,33 @@ public class BaseServiceImpl<M extends BaseMapper<E>, E, Q, F, D> extends Servic
             );
         }
         return queryWrapper;
+    }
+
+    /**
+     * 校验查询条件对应的数据是否唯一。
+     */
+    protected void validateUnique(QueryWrapper queryWrapper, String message) {
+        if (mapper.selectCountByQuery(queryWrapper) > 0) {
+            throw new BizException(ResultCode.DATA_ALREADY_EXISTS, message);
+        }
+    }
+
+    /**
+     * 校验查询条件对应的数据存在。
+     */
+    protected void validateExists(QueryWrapper queryWrapper, String message) {
+        if (mapper.selectCountByQuery(queryWrapper) == 0) {
+            throw new BizException(ResultCode.NOT_FOUND, message);
+        }
+    }
+
+    /**
+     * 校验查询条件对应的数据不存在。
+     */
+    protected void validateNotExists(QueryWrapper queryWrapper, String message) {
+        if (mapper.selectCountByQuery(queryWrapper) > 0) {
+            throw new BizException(ResultCode.CONFLICT, message);
+        }
     }
 
     /**
