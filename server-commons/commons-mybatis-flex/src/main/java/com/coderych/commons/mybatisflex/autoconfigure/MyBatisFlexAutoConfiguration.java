@@ -62,11 +62,11 @@ public class MyBatisFlexAutoConfiguration {
             // 插入监听
             globalConfig.registerInsertListener((object) -> {
                 if (object instanceof BaseEntity baseEntity) {
-                    String loginUsername = LoginUser.getLoginUsernameOrDefault("unknown");
+                    String loginUserId = LoginUser.getLoginUserIdOrDefault("unknown");
                     LocalDateTime now = LocalDateTime.now();
-                    baseEntity.setCreator(loginUsername);
+                    baseEntity.setCreator(loginUserId);
                     baseEntity.setCreateTime(now);
-                    baseEntity.setUpdater(loginUsername);
+                    baseEntity.setUpdater(loginUserId);
                     baseEntity.setUpdateTime(now);
                     baseEntity.setDeleted(0L);
                     baseEntity.setVersion(1);
@@ -80,8 +80,8 @@ public class MyBatisFlexAutoConfiguration {
             // 更新监听
             globalConfig.registerUpdateListener((object) -> {
                 if (object instanceof BaseEntity baseEntity) {
-                    String loginUsername = LoginUser.getLoginUsernameOrDefault("unknown");
-                    baseEntity.setUpdater(loginUsername);
+                    String loginUserId = LoginUser.getLoginUserIdOrDefault("unknown");
+                    baseEntity.setUpdater(loginUserId);
                     baseEntity.setUpdateTime(LocalDateTime.now());
                 }
             });

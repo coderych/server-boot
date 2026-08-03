@@ -14,8 +14,14 @@ import tools.jackson.databind.ser.jdk.NumberSerializer;
 public class BigNumberSerializer extends NumberSerializer {
     public static final BigNumberSerializer INSTANCE = new BigNumberSerializer(Number.class);
 
+    /**
+     * JavaScript 可安全表示的最大整数。
+     */
     private static final long MAX_SAFE_INTEGER = 9007199254740991L;
 
+    /**
+     * JavaScript 可安全表示的最小整数。
+     */
     private static final long MIN_SAFE_INTEGER = -9007199254740991L;
 
     public BigNumberSerializer(Class<? extends Number> rawType) {

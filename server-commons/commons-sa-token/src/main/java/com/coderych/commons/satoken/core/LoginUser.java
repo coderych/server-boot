@@ -21,12 +21,33 @@ import java.util.concurrent.atomic.AtomicBoolean;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class LoginUser {
     private static final AtomicBoolean INITIALIZED = new AtomicBoolean(false);
+    /**
+     * Sa-Token 令牌名称。
+     */
     public static volatile String TOKEN_NAME;
+    /**
+     * 登录用户名缓存键前缀。
+     */
     public static volatile String LOGIN_USERNAME_CACHE_KEY;
+    /**
+     * 登录租户缓存键前缀。
+     */
     public static volatile String LOGIN_TENANT_CACHE_KEY;
+    /**
+     * 登录用户缓存键前缀。
+     */
     public static volatile String LOGIN_USER_CACHE_KEY;
+    /**
+     * 用户角色缓存键前缀。
+     */
     public static volatile String LOGIN_USER_FIND_ROLE_CACHE_KEY;
+    /**
+     * 角色权限缓存键前缀。
+     */
     public static volatile String LOGIN_ROLE_FIND_PERMISSION_CACHE_KEY;
+    /**
+     * 超级管理员列表。
+     */
     public static volatile List<String> SUPER_ADMINS;
 
     /**

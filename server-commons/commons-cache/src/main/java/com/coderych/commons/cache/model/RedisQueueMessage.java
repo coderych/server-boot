@@ -18,10 +18,16 @@ public class RedisQueueMessage<T> {
 
     private String id = UUID.randomUUID().toString();
 
+    /**
+     * 消息载荷。
+     */
     private T payload;
 
     private Instant timestamp = Instant.now();
 
+    /**
+     * 已重试次数。
+     */
     private int retryCount;
 
     public RedisQueueMessage(T payload) {

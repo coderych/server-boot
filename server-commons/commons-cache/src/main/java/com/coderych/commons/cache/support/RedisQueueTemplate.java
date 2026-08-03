@@ -24,16 +24,31 @@ import java.util.function.Consumer;
 @Slf4j
 public class RedisQueueTemplate {
 
+    /**
+     * 消息载荷字段名。
+     */
     private static final String PAYLOAD_FIELD = "payload";
 
     private static final String RETRY_COUNT_FIELD = "retryCount";
 
+    /**
+     * 时间戳字段名。
+     */
     private static final String TIMESTAMP_FIELD = "timestamp";
 
+    /**
+     * 死信队列名称后缀。
+     */
     private static final String DEAD_LETTER_SUFFIX = ":dead-letter";
 
+    /**
+     * 缓存模块配置。
+     */
     private final CacheProperties properties;
 
+    /**
+     * Redis 操作模板。
+     */
     private final RedisTemplate<String, Object> redisTemplate;
 
     private final Set<String> createdGroups = ConcurrentHashMap.newKeySet();

@@ -12,17 +12,17 @@ import java.util.List;
 @Data
 public class TableMetadata {
     /**
-     * 表名
+     * 表名称。
      */
     private String tableName;
 
     /**
-     * 表备注
+     * 表备注。
      */
     private String remarks;
 
     /**
-     * 列信息列表
+     * 表字段元数据。
      */
     private List<ColumnMetadata> columns;
 }

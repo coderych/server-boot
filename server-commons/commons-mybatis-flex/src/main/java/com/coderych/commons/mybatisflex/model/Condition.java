@@ -15,28 +15,25 @@ import java.util.List;
  */
 @Data
 public class Condition {
-    /**
-     * 查询字段名
-     */
     private String key;
 
     /**
-     * 查询值，配合 {@link #operator} 参与条件比较
+     * 查询值。
      */
     private Object value;
 
     /**
-     * 比较操作符，默认 {@link Operator#EQ}
+     * 查询操作符。
      */
     private Operator operator = Operator.EQ;
 
     /**
-     * 子条件之间的逻辑关系，默认 {@link Relation#AND}
+     * 子条件连接关系。
      */
     private Relation relation = Relation.AND;
 
     /**
-     * 嵌套的子条件列表，用于构建多级条件组
+     * 子条件列表。
      */
     private List<Condition> children;
 }

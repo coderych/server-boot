@@ -17,7 +17,13 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface CrudApi {
+    /**
+     * 禁用的 CRUD 接口。
+     */
     Api[] excludes() default {};
 
+    /**
+     * 启用的 CRUD 接口。
+     */
     Api[] includes() default {};
 }

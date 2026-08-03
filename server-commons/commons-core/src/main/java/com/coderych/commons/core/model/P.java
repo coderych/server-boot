@@ -21,14 +21,29 @@ public class P<T> implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
+    /**
+     * 当前页码。
+     */
     private Long current;
 
+    /**
+     * 每页记录数。
+     */
     private Long size;
 
+    /**
+     * 总页数。
+     */
     private Long pages;
 
+    /**
+     * 总记录数。
+     */
     private Long total;
 
+    /**
+     * 当前页数据。
+     */
     private List<T> records;
 
     public static <T> P<T> of() {

@@ -56,6 +56,12 @@ public enum ResultCode {
     CANNOT_DELETE_SELF(6031, "不能删除当前登录用户"),
     CANNOT_MODIFY_SUPER_ADMIN(6032, "不允许操作超级管理员");
 
+    /**
+     * 状态码。
+     */
     private final int code;
+    /**
+     * 状态码对应的提示信息。
+     */
     private final String message;
 }

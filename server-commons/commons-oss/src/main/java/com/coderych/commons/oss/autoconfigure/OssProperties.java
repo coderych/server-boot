@@ -14,5 +14,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "commons.oss")
 public class OssProperties {
 
+    /**
+     * 是否启用对象存储模块。
+     */
     private boolean enabled = true;
 }

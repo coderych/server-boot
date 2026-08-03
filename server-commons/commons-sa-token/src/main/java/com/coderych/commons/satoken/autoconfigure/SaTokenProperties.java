@@ -14,6 +14,9 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "commons.sa-token")
 public class SaTokenProperties {
 
+    /**
+     * 是否启用 Sa-Token 模块。
+     */
     private boolean enabled = true;
 
     private String[] include = new String[]{"/**"};

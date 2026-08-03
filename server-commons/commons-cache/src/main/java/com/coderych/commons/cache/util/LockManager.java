@@ -23,8 +23,14 @@ import java.util.concurrent.TimeUnit;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class LockManager {
 
+    /**
+     * 缓存模块配置。
+     */
     private static volatile CacheProperties cacheProperties;
 
+    /**
+     * Redisson 客户端。
+     */
     private static volatile RedissonClient redissonClient;
 
     public static synchronized void init(CacheProperties properties, RedissonClient redissonClient) {
@@ -137,6 +143,9 @@ public final class LockManager {
     @Getter
     public static class HeldLock implements AutoCloseable {
 
+        /**
+         * Redisson 锁对象。
+         */
         private final RLock lock;
 
         private final String name;

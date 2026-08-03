@@ -21,22 +21,49 @@ import java.util.Map;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class JobDataMapper {
 
+    /**
+     * 处理器名称数据键。
+     */
     public static final String HANDLER_NAME = "commons.job.handlerName";
 
+    /**
+     * 任务数据键。
+     */
     public static final String JOB_DATA = "commons.job.data";
 
+    /**
+     * 人工触发标识键。
+     */
     public static final String MANUAL_TRIGGER = "commons.job.manualTrigger";
 
+    /**
+     * 执行次数数据键。
+     */
     public static final String ATTEMPT = "commons.job.attempt";
 
+    /**
+     * 最大重试次数数据键。
+     */
     public static final String RETRY_MAX_ATTEMPTS = "commons.job.retry.maxAttempts";
 
+    /**
+     * 重试延迟数据键。
+     */
     public static final String RETRY_DELAY_MS = "commons.job.retry.delayMs";
 
+    /**
+     * 重试退避乘数数据键。
+     */
     public static final String RETRY_BACKOFF_MULTIPLIER = "commons.job.retry.backoffMultiplier";
 
+    /**
+     * 触发器名称后缀。
+     */
     public static final String TRIGGER_SUFFIX = "-trigger";
 
+    /**
+     * 重试触发器名称后缀。
+     */
     public static final String RETRY_TRIGGER_SUFFIX = "-retry-trigger";
 
     public static JobDetail toJobDetail(JobScheduleRequest request, JobRetryPolicy retryPolicy) {

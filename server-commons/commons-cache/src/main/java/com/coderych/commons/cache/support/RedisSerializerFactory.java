@@ -15,8 +15,14 @@ import tools.jackson.databind.json.JsonMapper;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class RedisSerializerFactory {
 
+    /**
+     * Key 使用的字符串序列化器。
+     */
     private final RedisSerializer<String> STRING_SERIALIZER = StringRedisSerializer.UTF_8;
 
+    /**
+     * Value 使用的 JSON 序列化器。
+     */
     private RedisSerializer<Object> valueSerializer;
 
     public RedisSerializerFactory(JsonMapper jsonMapper) {

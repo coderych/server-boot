@@ -21,21 +21,42 @@ import java.util.Map;
 @Accessors(fluent = false)
 public class JobScheduleRequest {
 
+    /**
+     * 任务处理器名称。
+     */
     private final String handlerName;
 
     private final String jobName;
 
+    /**
+     * 任务分组。
+     */
     @Builder.Default
     private final String jobGroup = "DEFAULT";
 
+    /**
+     * Cron 表达式。
+     */
     private final String cronExpression;
 
+    /**
+     * 一次性任务的开始时间。
+     */
     private final Instant startAt;
 
+    /**
+     * 任务执行数据。
+     */
     private final Map<String, Object> data;
 
+    /**
+     * 任务重试策略。
+     */
     private final JobRetryPolicy retryPolicy;
 
+    /**
+     * 是否创建后立即触发。
+     */
     @Builder.Default
     private final boolean immediate = false;
 

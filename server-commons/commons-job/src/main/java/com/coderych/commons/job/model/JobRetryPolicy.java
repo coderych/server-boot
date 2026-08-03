@@ -16,10 +16,19 @@ import java.time.Duration;
 @Builder
 public class JobRetryPolicy {
 
+    /**
+     * 最大重试次数。
+     */
     private final int maxAttempts;
 
+    /**
+     * 初始重试延迟。
+     */
     private final Duration delay;
 
+    /**
+     * 重试延迟退避乘数。
+     */
     private final double backoffMultiplier;
 
     public JobRetryPolicy(int maxAttempts, Duration delay, double backoffMultiplier) {

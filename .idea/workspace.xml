@@ -6,10 +6,43 @@
   <component name="ChangeListManager">
     <list default="true" id="e7bc3544-ec3e-40e3-b5cd-278280c26959" name="更改" comment="refactor(web): 重构加密解密功能为可扩展服务接口&#10;&#10;- 移除应用配置文件中的加密算法配置项&#10;- 将Cryptos工具类重构为CryptoService接口供业务实现&#10;- 更新加密解密注解Crypto添加encrypt属性和算法参数&#10;- 修改请求体解密Advice改为依赖CryptoService实现&#10;- 修改响应体加密Advice改为依赖CryptoService实现&#10;- 删除加密算法类型枚举和相关测试代码&#10;- 在core模块添加Bouncy Castle安全算法库依赖&#10;- 移除WebProperties中的加密配置相关属性&#10;- 更新自动配置类移除加密工具初始化逻辑&#10;- 调整测试用例适配新的加密解密实现方式">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server-module-system/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/server-module-system/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server-module-system/src/main/resources/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/server-module-system/src/main/resources/schema.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server-start/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/server-start/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server-start/src/main/java/com/coderych/server/RunApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-start/src/main/java/com/coderych/server/RunApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-cache/src/main/java/com/coderych/commons/cache/autoconfigure/CacheProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-cache/src/main/java/com/coderych/commons/cache/autoconfigure/CacheProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-cache/src/main/java/com/coderych/commons/cache/model/RedisQueueMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-cache/src/main/java/com/coderych/commons/cache/model/RedisQueueMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-cache/src/main/java/com/coderych/commons/cache/support/RedisQueueTemplate.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-cache/src/main/java/com/coderych/commons/cache/support/RedisQueueTemplate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-cache/src/main/java/com/coderych/commons/cache/support/RedisSerializerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-cache/src/main/java/com/coderych/commons/cache/support/RedisSerializerFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-cache/src/main/java/com/coderych/commons/cache/util/LockManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-cache/src/main/java/com/coderych/commons/cache/util/LockManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-cache/src/main/java/com/coderych/commons/cache/util/RedisCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-cache/src/main/java/com/coderych/commons/cache/util/RedisCache.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-core/src/main/java/com/coderych/commons/core/autoconfigure/CoreProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-core/src/main/java/com/coderych/commons/core/autoconfigure/CoreProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-core/src/main/java/com/coderych/commons/core/enums/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-core/src/main/java/com/coderych/commons/core/enums/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-core/src/main/java/com/coderych/commons/core/enums/ResultCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-core/src/main/java/com/coderych/commons/core/enums/ResultCode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-core/src/main/java/com/coderych/commons/core/exception/BizException.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-core/src/main/java/com/coderych/commons/core/exception/BizException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-core/src/main/java/com/coderych/commons/core/model/P.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-core/src/main/java/com/coderych/commons/core/model/P.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-core/src/main/java/com/coderych/commons/core/model/PageQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-core/src/main/java/com/coderych/commons/core/model/PageQuery.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-core/src/main/java/com/coderych/commons/core/model/Query.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-core/src/main/java/com/coderych/commons/core/model/Query.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-core/src/main/java/com/coderych/commons/core/model/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-core/src/main/java/com/coderych/commons/core/model/R.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-core/src/main/java/com/coderych/commons/core/util/json/BigNumberSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-core/src/main/java/com/coderych/commons/core/util/json/BigNumberSerializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-core/src/main/java/com/coderych/commons/core/util/validation/ValidationUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-core/src/main/java/com/coderych/commons/core/util/validation/ValidationUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-core/src/main/java/com/coderych/commons/core/util/web/WebUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-core/src/main/java/com/coderych/commons/core/util/web/WebUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-job/src/main/java/com/coderych/commons/job/autoconfigure/JobProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-job/src/main/java/com/coderych/commons/job/autoconfigure/JobProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-job/src/main/java/com/coderych/commons/job/model/JobExecuteContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-job/src/main/java/com/coderych/commons/job/model/JobExecuteContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-job/src/main/java/com/coderych/commons/job/model/JobRetryPolicy.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-job/src/main/java/com/coderych/commons/job/model/JobRetryPolicy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-job/src/main/java/com/coderych/commons/job/model/JobScheduleRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-job/src/main/java/com/coderych/commons/job/model/JobScheduleRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-job/src/main/java/com/coderych/commons/job/support/JobDataMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-job/src/main/java/com/coderych/commons/job/support/JobDataMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-log/src/main/java/com/coderych/commons/log/autoconfigure/LogProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-log/src/main/java/com/coderych/commons/log/autoconfigure/LogProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-log/src/main/java/com/coderych/commons/log/model/LogRecord.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-log/src/main/java/com/coderych/commons/log/model/LogRecord.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-log/src/main/java/com/coderych/commons/log/support/SensitiveValueMasker.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-log/src/main/java/com/coderych/commons/log/support/SensitiveValueMasker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-mybatis-flex/src/main/java/com/coderych/commons/mybatisflex/annotation/CrudApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-mybatis-flex/src/main/java/com/coderych/commons/mybatisflex/annotation/CrudApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-mybatis-flex/src/main/java/com/coderych/commons/mybatisflex/annotation/QueryField.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-mybatis-flex/src/main/java/com/coderych/commons/mybatisflex/annotation/QueryField.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-mybatis-flex/src/main/java/com/coderych/commons/mybatisflex/autoconfigure/MyBatisFlexAutoConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-mybatis-flex/src/main/java/com/coderych/commons/mybatisflex/autoconfigure/MyBatisFlexAutoConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-mybatis-flex/src/main/java/com/coderych/commons/mybatisflex/autoconfigure/MyBatisFlexProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-mybatis-flex/src/main/java/com/coderych/commons/mybatisflex/autoconfigure/MyBatisFlexProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-mybatis-flex/src/main/java/com/coderych/commons/mybatisflex/controller/BaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-mybatis-flex/src/main/java/com/coderych/commons/mybatisflex/controller/BaseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-mybatis-flex/src/main/java/com/coderych/commons/mybatisflex/model/Condition.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-mybatis-flex/src/main/java/com/coderych/commons/mybatisflex/model/Condition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-mybatis-flex/src/main/java/com/coderych/commons/mybatisflex/model/TableMetadata.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-mybatis-flex/src/main/java/com/coderych/commons/mybatisflex/model/TableMetadata.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-oss/src/main/java/com/coderych/commons/oss/autoconfigure/OssAutoConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-oss/src/main/java/com/coderych/commons/oss/autoconfigure/OssAutoConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-oss/src/main/java/com/coderych/commons/oss/autoconfigure/OssProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-oss/src/main/java/com/coderych/commons/oss/autoconfigure/OssProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-sa-token/src/main/java/com/coderych/commons/satoken/autoconfigure/SaTokenProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-sa-token/src/main/java/com/coderych/commons/satoken/autoconfigure/SaTokenProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-sa-token/src/main/java/com/coderych/commons/satoken/core/LoginUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-sa-token/src/main/java/com/coderych/commons/satoken/core/LoginUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-web/src/main/java/com/coderych/commons/web/autoconfigure/WebProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-web/src/main/java/com/coderych/commons/web/autoconfigure/WebProperties.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server-start/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/server-start/src/main/resources/application-dev.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -53,7 +86,7 @@
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "D:/Workspace/YCH/server-boot",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "项目",
+    "project.structure.last.edited": "模块",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "configurable.group.language",
@@ -61,20 +94,6 @@
   }
 }]]></component>
   <component name="RunManager">
-    <configuration name="RunApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UnknownPolicyInFreeMode" />
-      <module name="server-start" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.coderych.server.RunApplication" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.coderych.server.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.RunApplication" />

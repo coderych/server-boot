@@ -32,8 +32,9 @@ public final class RedisCache {
         RedisCache.redisTemplate = redisTemplate;
     }
 
-    public static Object get(String key) {
-        return redisTemplate.opsForValue().get(buildKey(key));
+    @SuppressWarnings("unchecked")
+    public static <T> T get(String key) {
+        return (T) redisTemplate.opsForValue().get(buildKey(key));
     }
 
     public static <T> T get(String key, Class<T> targetType) {

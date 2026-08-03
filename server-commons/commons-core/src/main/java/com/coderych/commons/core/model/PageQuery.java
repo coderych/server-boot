@@ -22,8 +22,14 @@ public class PageQuery extends Query {
     @Serial
     private static final long serialVersionUID = 1L;
 
+    /**
+     * 当前页码。
+     */
     private Long current = 1L;
 
+    /**
+     * 每页记录数。
+     */
     private Long size = 10L;
 
     public static PageQuery of() {

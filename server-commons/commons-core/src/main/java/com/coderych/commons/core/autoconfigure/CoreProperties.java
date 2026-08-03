@@ -14,5 +14,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "commons.core")
 public class CoreProperties {
 
+    /**
+     * 是否启用核心模块。
+     */
     private boolean enabled = true;
 }

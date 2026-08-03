@@ -16,8 +16,14 @@ import java.util.stream.Collectors;
  */
 public class SensitiveValueMasker {
 
+    /**
+     * 敏感信息掩码。
+     */
     private static final String MASK = "******";
 
+    /**
+     * 敏感字段名称集合。
+     */
     private final Set<String> sensitiveFields;
 
     public SensitiveValueMasker(LogProperties properties) {

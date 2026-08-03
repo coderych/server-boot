@@ -19,6 +19,9 @@ import java.util.Set;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class ValidationUtils {
 
+    /**
+     * 未配置 Spring 校验器时使用的备用实例。
+     */
     private static volatile Validator fallbackValidator;
 
     public static <T> void validate(T value, Class<?>... groups) {

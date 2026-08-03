@@ -19,6 +19,9 @@ import java.util.Optional;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class WebUtils {
 
+    /**
+     * 无法获取客户端地址时使用的默认值。
+     */
     private static final String UNKNOWN_IP = "unknown";
 
     private static final String[] IP_HEADER_NAMES = {

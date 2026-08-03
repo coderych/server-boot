@@ -26,8 +26,14 @@ public class Query implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
+    /**
+     * 排序字段安全校验规则。
+     */
     private static final Pattern SAFE_FIELD_PATTERN = Pattern.compile("^[a-zA-Z_][a-zA-Z0-9_]*$");
 
+    /**
+     * 排序表达式，格式为字段名和排序方向的逗号分隔列表。
+     */
     private String orderBy;
 
     public static Query of() {

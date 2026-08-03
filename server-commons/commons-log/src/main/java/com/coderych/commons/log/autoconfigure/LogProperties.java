@@ -18,12 +18,24 @@ import java.util.List;
 @ConfigurationProperties(prefix = "commons.log")
 public class LogProperties {
 
+    /**
+     * 是否启用日志模块。
+     */
     private boolean enabled = true;
 
+    /**
+     * 是否记录方法参数。
+     */
     private boolean includeArgs = true;
 
+    /**
+     * 是否记录返回结果。
+     */
     private boolean includeResult = true;
 
+    /**
+     * 参数和结果的最大记录长度。
+     */
     private int maxLength = 2000;
 
     private List<String> sensitiveFields = new ArrayList<>(List.of(

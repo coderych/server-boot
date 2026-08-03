@@ -4,25 +4,31 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&tinyInt1isBit=false&allowLoadLocalInfile=true&allowLocalInfile=true&allowUrlInLocalInfile=true&allowPublicKeyRetrieval=true&allowMultiQueries=true&allowMultiQueries=true&allowPublicKeyRetrieval=true&allowUrlInLocalInfile=true
-    username: ${DB_USERNAME:root}
-    password: ${DB_PASSWORD:123456}
+    url: jdbc:mysql://${DB_HOST}:${DB_PORT}/${DB_NAME}?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&tinyInt1isBit=false&allowLoadLocalInfile=true&allowLocalInfile=true&allowUrlInLocalInfile=true&allowPublicKeyRetrieval=true&allowMultiQueries=true&allowMultiQueries=true&allowPublicKeyRetrieval=true&allowUrlInLocalInfile=true
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
 
   data:
     redis:
-      host: localhost
-      port: 6379
+      host: ${REDIS_HOST}
+      port: ${REDIS_PORT}
+      password: ${REDIS_PASSWORD:}
+  # 开发环境默认不启用外部 AI 模型，避免未配置密钥时阻断服务启动。
   ai:
-    openai:
-      base-url: https://api.xiaomimimo.com
-      api-key: ${AI_API_KEY:sk-your-api-key-here}
-      chat:
-        options:
-          model: mimo-v2-flash
+    model:
+      chat: none
+      embedding: none
+      audio:
+        speech: none
+        transcription: none
+      image: none
+      moderation: none
 
 commons:
   sa-token:
-    enabled: false
+    enabled: true
+    super-admins:
+      - admin
   job:
     xxl:
       enabled: false
