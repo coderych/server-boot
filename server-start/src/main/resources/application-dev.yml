@@ -26,7 +26,7 @@ spring:
 
 commons:
   sa-token:
-    enabled: true
+    enabled: false
     super-admins:
       - admin
   job:

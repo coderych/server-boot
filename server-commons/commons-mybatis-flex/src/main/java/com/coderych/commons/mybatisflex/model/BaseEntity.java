@@ -1,5 +1,6 @@
 package com.coderych.commons.mybatisflex.model;
 
+import com.mybatisflex.annotation.Id;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,6 +17,7 @@ public abstract class BaseEntity {
     /**
      * 主键ID
      */
+    @Id
     private String id;
 
     /**

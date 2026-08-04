@@ -63,7 +63,7 @@ public class SaTokenAutoConfiguration {
     public SmartInitializingSingleton satokenInitializer(SaTokenConfig saTokenConfig, SaTokenProperties saTokenProperties) {
         return () -> {
             log.info(">>>>>>>>> Bean: satokenInitializer —— 初始化 Sa-Token LoginUser");
-            LoginUser.init(saTokenConfig.getTokenName(), saTokenProperties.getSuperAdmins());
+            LoginUser.init(saTokenProperties.isEnabled(), saTokenConfig.getTokenName(), saTokenProperties.getSuperAdmins());
         };
     }
 }

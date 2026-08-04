@@ -4,10 +4,35 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e7bc3544-ec3e-40e3-b5cd-278280c26959" name="更改" comment="refactor(common): 重构项目配置和代码结构以提升可维护性&#10;&#10;- 将数据库和Redis连接配置改为环境变量方式，增强部署灵活性&#10;- 在BaseController中添加完整的CRUD接口文档注释并集成权限验证功能&#10;- 为各个工具类和配置类添加详细的JavaDoc注释说明&#10;- 修复自动填充逻辑中使用用户名改为用户ID的错误&#10;- 优化Redis缓存组件的泛型支持和序列化配置&#10;- 更新定时任务和OSS存储相关配置项的文档注释">
+    <list default="true" id="e7bc3544-ec3e-40e3-b5cd-278280c26959" name="更改" comment="feat(common): 添加数据校验方法并更新系统配置&#10;&#10;- 在BaseServiceImpl中添加validateUnique、validateExists、validateNotExists数据校验方法&#10;- 为部门表添加code字段和唯一索引约束uk_tenant_dept_code&#10;- 更新系统配置表唯一索引从uk_tenant_key调整为uk_key&#10;- 重命名多个配置项的key值避免命名冲突&#10;- 调整第三方登录、支付等配置项的前缀命名规范">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-cache/src/test/java/com/coderych/commons/cache/autoconfigure/CachePropertiesTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-cache/src/test/java/com/coderych/commons/cache/model/RedisQueueMessageTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-core/src/main/java/com/coderych/commons/core/util/PasswordUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-core/src/main/java/com/coderych/commons/core/util/PasswordUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-core/src/test/java/com/coderych/commons/core/enums/ResultCodeTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-core/src/test/java/com/coderych/commons/core/exception/BizExceptionTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-core/src/test/java/com/coderych/commons/core/model/PTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-core/src/test/java/com/coderych/commons/core/model/PageQueryTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-core/src/test/java/com/coderych/commons/core/model/PairTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-core/src/test/java/com/coderych/commons/core/model/QueryTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-core/src/test/java/com/coderych/commons/core/model/RTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-job/src/test/java/com/coderych/commons/job/autoconfigure/JobPropertiesTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-job/src/test/java/com/coderych/commons/job/model/JobScheduleRequestTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-log/src/test/java/com/coderych/commons/log/autoconfigure/LogPropertiesTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-log/src/test/java/com/coderych/commons/log/model/LogRecordTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-mybatis-flex/src/main/java/com/coderych/commons/mybatisflex/autoconfigure/MyBatisFlexAutoConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-mybatis-flex/src/main/java/com/coderych/commons/mybatisflex/autoconfigure/MyBatisFlexAutoConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-mybatis-flex/src/main/java/com/coderych/commons/mybatisflex/model/BaseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-mybatis-flex/src/main/java/com/coderych/commons/mybatisflex/model/BaseEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server-commons/commons-mybatis-flex/src/main/java/com/coderych/commons/mybatisflex/service/impl/BaseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-mybatis-flex/src/main/java/com/coderych/commons/mybatisflex/service/impl/BaseServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-mybatis-flex/src/test/java/com/coderych/commons/mybatisflex/autoconfigure/MyBatisFlexPropertiesTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-mybatis-flex/src/test/java/com/coderych/commons/mybatisflex/model/ConditionTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-sa-token/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-sa-token/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-sa-token/src/main/java/com/coderych/commons/satoken/autoconfigure/SaTokenAutoConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-sa-token/src/main/java/com/coderych/commons/satoken/autoconfigure/SaTokenAutoConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-sa-token/src/main/java/com/coderych/commons/satoken/core/LoginUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-sa-token/src/main/java/com/coderych/commons/satoken/core/LoginUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-sa-token/src/test/java/com/coderych/commons/satoken/autoconfigure/SaTokenPropertiesTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-sa-token/src/test/java/com/coderych/commons/satoken/core/LoginUserTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/server-commons/commons-sa-token/src/test/java/com/coderych/commons/satoken/core/LoginUserTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-commons/commons-web/src/test/java/com/coderych/commons/web/autoconfigure/WebPropertiesTests.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/server-module-system/src/main/resources/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/server-module-system/src/main/resources/schema.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-start/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/server-start/src/main/resources/application-dev.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,31 +69,24 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "Spring Boot.RunApplication.executor": "Run",
+    "Spring Boot.RunApplication.executor": "Debug",
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "D:/Workspace/YCH/server-boot",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "模块",
+    "project.structure.last.edited": "SDK",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "configurable.group.language",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
-    <recent_temporary>
-      <list>
-        <item itemvalue="Spring Boot.RunApplication" />
-      </list>
-    </recent_temporary>
-  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-30f59d01ecdd-37e91769500f-intellij.indexing.shared.core-IU-261.26222.65" />
-        <option value="bundled-js-predefined-d6986cc7102b-31caf2ab9e3c-JavaScript-IU-261.26222.65" />
+        <option value="bundled-jdk-30f59d01ecdd-63390994e64e-intellij.indexing.shared.core-IU-262.8665.337" />
+        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-IU-262.8665.337" />
       </set>
     </attachedChunks>
   </component>
@@ -151,7 +169,19 @@
     <MESSAGE value="style(common): 为实体类和元数据模型添加字段注释&#10;&#10;- 为BaseEntity类的id、tenantId、creator等字段添加中文注释&#10;- 为ColumnMetadata类的columnName、typeName、columnSize等字段添加详细注释&#10;- 为Condition类的key、value、operator等字段补充功能说明注释&#10;- 为TableMetadata类的tableName、remarks、columns字段添加文档注释&#10;- 调整部分代码的import顺序和缩进格式&#10;- 修复SensitiveValueMasker中代码缩进问题" />
     <MESSAGE value="refactor(web): 重构加密解密功能为可扩展服务接口&#10;&#10;- 移除应用配置文件中的加密算法配置项&#10;- 将Cryptos工具类重构为CryptoService接口供业务实现&#10;- 更新加密解密注解Crypto添加encrypt属性和算法参数&#10;- 修改请求体解密Advice改为依赖CryptoService实现&#10;- 修改响应体加密Advice改为依赖CryptoService实现&#10;- 删除加密算法类型枚举和相关测试代码&#10;- 在core模块添加Bouncy Castle安全算法库依赖&#10;- 移除WebProperties中的加密配置相关属性&#10;- 更新自动配置类移除加密工具初始化逻辑&#10;- 调整测试用例适配新的加密解密实现方式" />
     <MESSAGE value="refactor(common): 重构项目配置和代码结构以提升可维护性&#10;&#10;- 将数据库和Redis连接配置改为环境变量方式，增强部署灵活性&#10;- 在BaseController中添加完整的CRUD接口文档注释并集成权限验证功能&#10;- 为各个工具类和配置类添加详细的JavaDoc注释说明&#10;- 修复自动填充逻辑中使用用户名改为用户ID的错误&#10;- 优化Redis缓存组件的泛型支持和序列化配置&#10;- 更新定时任务和OSS存储相关配置项的文档注释" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor(common): 重构项目配置和代码结构以提升可维护性&#10;&#10;- 将数据库和Redis连接配置改为环境变量方式，增强部署灵活性&#10;- 在BaseController中添加完整的CRUD接口文档注释并集成权限验证功能&#10;- 为各个工具类和配置类添加详细的JavaDoc注释说明&#10;- 修复自动填充逻辑中使用用户名改为用户ID的错误&#10;- 优化Redis缓存组件的泛型支持和序列化配置&#10;- 更新定时任务和OSS存储相关配置项的文档注释" />
+    <MESSAGE value="feat(common): 添加数据校验方法并更新系统配置&#10;&#10;- 在BaseServiceImpl中添加validateUnique、validateExists、validateNotExists数据校验方法&#10;- 为部门表添加code字段和唯一索引约束uk_tenant_dept_code&#10;- 更新系统配置表唯一索引从uk_tenant_key调整为uk_key&#10;- 重命名多个配置项的key值避免命名冲突&#10;- 调整第三方登录、支付等配置项的前缀命名规范" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(common): 添加数据校验方法并更新系统配置&#10;&#10;- 在BaseServiceImpl中添加validateUnique、validateExists、validateNotExists数据校验方法&#10;- 为部门表添加code字段和唯一索引约束uk_tenant_dept_code&#10;- 更新系统配置表唯一索引从uk_tenant_key调整为uk_key&#10;- 重命名多个配置项的key值避免命名冲突&#10;- 调整第三方登录、支付等配置项的前缀命名规范" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/server-commons/commons-sa-token/src/main/java/com/coderych/commons/satoken/autoconfigure/SaTokenAutoConfiguration.java</url>
+          <line>36</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

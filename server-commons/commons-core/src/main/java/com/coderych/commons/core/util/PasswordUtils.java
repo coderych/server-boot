@@ -4,6 +4,8 @@ import cn.hutool.crypto.digest.BCrypt;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
+import java.security.SecureRandom;
+
 /**
  * 密码工具类，提供基于用户独立盐值的 BCrypt 哈希与校验。
  *
@@ -11,13 +13,20 @@ import lombok.NoArgsConstructor;
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class PasswordUtils {
+    private static final String SALT_CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    private static final SecureRandom RANDOM = new SecureRandom();
+
     /**
      * 生成随机盐值。
      *
-     * @return 32 位 UUID 盐值
+     * @return 8 位随机字符串盐值
      */
     public static String generateSalt() {
-        return IdWorker.fastSimpleUUID();
+        StringBuilder salt = new StringBuilder(8);
+        for (int i = 0; i < 8; i++) {
+            salt.append(SALT_CHARACTERS.charAt(RANDOM.nextInt(SALT_CHARACTERS.length())));
+        }
+        return salt.toString();
     }
 
     /**

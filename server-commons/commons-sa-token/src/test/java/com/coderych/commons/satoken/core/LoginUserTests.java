@@ -92,4 +92,30 @@ class LoginUserTests {
             assertEquals("default", LoginUser.getLoginUserIdOrDefault("default"));
         }
     }
+
+    @Test
+    void permissionChecksShouldPassWhenDisabled() {
+        try (MockedStatic<StpUtil> mocked = mockStatic(StpUtil.class)) {
+            assertTrue(LoginUser.hasPermission("system:user:query"));
+            assertTrue(LoginUser.hasPermissionAnd("system:user:query"));
+            assertTrue(LoginUser.hasPermissionOr("system:user:query"));
+            LoginUser.checkPermission("system:user:query");
+            LoginUser.checkPermissionAnd("system:user:query");
+            LoginUser.checkPermissionOr("system:user:query");
+            mocked.verifyNoInteractions();
+        }
+    }
+
+    @Test
+    void roleChecksShouldPassWhenDisabled() {
+        try (MockedStatic<StpUtil> mocked = mockStatic(StpUtil.class)) {
+            assertTrue(LoginUser.hasRole("admin"));
+            assertTrue(LoginUser.hasRoleAnd("admin"));
+            assertTrue(LoginUser.hasRoleOr("admin"));
+            LoginUser.checkRole("admin");
+            LoginUser.checkRoleAnd("admin");
+            LoginUser.checkRoleOr("admin");
+            mocked.verifyNoInteractions();
+        }
+    }
 }

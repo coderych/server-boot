@@ -11,12 +11,11 @@ import com.coderych.commons.mybatisflex.service.BaseService;
 import com.coderych.commons.mybatisflex.util.Of;
 import com.coderych.commons.mybatisflex.util.QueryWrapperBuilder;
 import com.mybatisflex.core.BaseMapper;
+import com.mybatisflex.core.paginate.Page;
 import com.mybatisflex.core.query.QueryWrapper;
 import com.mybatisflex.spring.service.impl.ServiceImpl;
-import org.springframework.util.StringUtils;
 
 import java.io.Serializable;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -46,13 +45,15 @@ public class BaseServiceImpl<M extends BaseMapper<E>, E, Q, F, D> extends Servic
     @Override
     public P<D> page(Q query, PageQuery pageQuery) {
         QueryWrapper queryWrapper = buildQueryWrapper(query, pageQuery);
-        return Of.p(mapper.paginateAs(Of.page(pageQuery), queryWrapper, dClass));
+        Page<E> page = mapper.paginate(Of.page(pageQuery), queryWrapper);
+        return P.of(page.getPageNumber(), page.getPageSize(), page.getTotalRow(),
+                BEAN.convertList(page.getRecords(), dClass));
     }
 
     @Override
     public List<D> list(Q query, Query baseQuery) {
         QueryWrapper queryWrapper = buildQueryWrapper(query, baseQuery);
-        return mapper.selectListByQueryAs(queryWrapper, dClass);
+        return BEAN.convertList(mapper.selectListByQuery(queryWrapper), dClass);
     }
 
     @Override
