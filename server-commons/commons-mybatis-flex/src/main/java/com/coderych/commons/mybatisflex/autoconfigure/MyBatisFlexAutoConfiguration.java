@@ -2,6 +2,7 @@ package com.coderych.commons.mybatisflex.autoconfigure;
 
 import com.coderych.commons.mybatisflex.aspect.CrudApiAspect;
 import com.coderych.commons.mybatisflex.model.BaseEntity;
+import com.coderych.commons.mybatisflex.model.TenantEntity;
 import com.coderych.commons.mybatisflex.service.DatabaseMetadataService;
 import com.coderych.commons.satoken.core.LoginUser;
 import com.mybatisflex.annotation.KeyType;
@@ -99,8 +100,8 @@ public class MyBatisFlexAutoConfiguration {
                     baseEntity.setDeleted(0L);
                     baseEntity.setVersion(1);
                     // 自动填充租户 ID
-                    if (baseEntity.getTenantId() == null) {
-                        baseEntity.setTenantId(LoginUser.getLoginTenantIdOrDefault("0"));
+                    if (object instanceof TenantEntity tenantEntity && tenantEntity.getTenantId() == null) {
+                        tenantEntity.setTenantId(LoginUser.getLoginTenantIdOrDefault("0"));
                     }
                 }
             }, BaseEntity.class);

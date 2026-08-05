@@ -71,7 +71,20 @@ class JobDataMapperTests {
         JobScheduleRequest request = cronRequest();
         JobDetail jobDetail = JobDataMapper.toJobDetail(request, defaultRetryPolicy());
 
-        assertEquals(DelegatingQuartzJob.class, jobDetail.getJobClass());
+        assertEquals(NonConcurrentDelegatingQuartzJob.class, jobDetail.getJobClass());
+    }
+
+    @Test
+    void toJobDataMapShouldUseEmptyDataWhenRequestDataIsOmitted() {
+        JobScheduleRequest request = JobScheduleRequest.builder()
+                .handlerName("testHandler")
+                .jobName("testJob")
+                .cronExpression("0 0/5 * * * ?")
+                .build();
+
+        JobDataMap dataMap = JobDataMapper.toJobDataMap(request, defaultRetryPolicy());
+
+        assertTrue(JobDataMapper.readData(dataMap).isEmpty());
     }
 
     @Test

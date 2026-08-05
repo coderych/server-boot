@@ -47,7 +47,20 @@ public class JobScheduleRequest {
     /**
      * 任务执行数据。
      */
-    private final Map<String, Object> data;
+    @Builder.Default
+    private final Map<String, Object> data = Map.of();
+
+    /**
+     * 是否允许同一任务并发执行。
+     */
+    @Builder.Default
+    private final boolean concurrent = false;
+
+    /**
+     * Cron misfire 策略：1 立即执行，2 忽略错过的触发，3 放弃错过的触发。
+     */
+    @Builder.Default
+    private final int misfirePolicy = 3;
 
     /**
      * 任务重试策略。

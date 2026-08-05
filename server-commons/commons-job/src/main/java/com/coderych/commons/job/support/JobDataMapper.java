@@ -67,7 +67,10 @@ public final class JobDataMapper {
     public static final String RETRY_TRIGGER_SUFFIX = "-retry-trigger";
 
     public static JobDetail toJobDetail(JobScheduleRequest request, JobRetryPolicy retryPolicy) {
-        return JobBuilder.newJob(DelegatingQuartzJob.class)
+        Class<? extends Job> jobClass = request.isConcurrent()
+                ? ConcurrentDelegatingQuartzJob.class
+                : NonConcurrentDelegatingQuartzJob.class;
+        return JobBuilder.newJob(jobClass)
                 .withIdentity(jobKey(request))
                 .usingJobData(toJobDataMap(request, retryPolicy))
                 .storeDurably()
@@ -79,7 +82,14 @@ public final class JobDataMapper {
                 .withIdentity(triggerKey(request.getJobName(), request.getJobGroup()))
                 .forJob(jobKey(request));
         if (request.isCron()) {
-            return builder.withSchedule(CronScheduleBuilder.cronSchedule(request.getCronExpression())).build();
+            CronScheduleBuilder schedule = CronScheduleBuilder.cronSchedule(request.getCronExpression());
+            switch (request.getMisfirePolicy()) {
+                case 1 -> schedule.withMisfireHandlingInstructionFireAndProceed();
+                case 2 -> schedule.withMisfireHandlingInstructionIgnoreMisfires();
+                case 3 -> schedule.withMisfireHandlingInstructionDoNothing();
+                default -> throw new IllegalArgumentException("Unsupported misfire policy: " + request.getMisfirePolicy());
+            }
+            return builder.withSchedule(schedule).build();
         }
         return builder.startAt(java.util.Date.from(request.getStartAt())).build();
     }

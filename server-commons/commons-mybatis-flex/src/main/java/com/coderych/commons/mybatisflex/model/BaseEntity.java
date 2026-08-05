@@ -21,11 +21,6 @@ public abstract class BaseEntity {
     private String id;
 
     /**
-     * 租户ID
-     */
-    private String tenantId;
-
-    /**
      * 创建人
      */
     private String creator;

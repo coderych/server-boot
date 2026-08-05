@@ -1,5 +1,6 @@
 package com.coderych.commons.core.util;
 
+import cn.hutool.core.bean.BeanUtil;
 import io.github.linpeilie.Converter;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -90,5 +91,19 @@ public final class BEAN {
             log.warn("MapStruct conversion from Map failed, falling back to JSON conversion for type: {}", targetType.getName(), exception);
             return JSON.convert(source, targetType);
         }
+    }
+
+    public static Map<String, Object> toMap(Object source) {
+        return BeanUtil.beanToMap(source);
+    }
+
+    public static Map<String, Object> toMap(Object source, String... ignoreProperties) {
+        Map<String, Object> map = BeanUtil.beanToMap(source);
+        if (ignoreProperties != null) {
+            for (String ignoreProperty : ignoreProperties) {
+                map.remove(ignoreProperty);
+            }
+        }
+        return map;
     }
 }
