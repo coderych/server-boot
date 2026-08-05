@@ -41,4 +41,5 @@ build/
 ### Maven Flatten ###
 **/.flattened-pom.xml
 
-#docs/superpowers
+# Secrets
+application-secrets.yml

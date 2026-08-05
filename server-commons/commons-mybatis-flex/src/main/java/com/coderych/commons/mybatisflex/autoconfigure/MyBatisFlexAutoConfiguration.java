@@ -11,7 +11,7 @@ import com.mybatisflex.core.audit.ConsoleMessageCollector;
 import com.mybatisflex.core.audit.MessageCollector;
 import com.mybatisflex.core.keygen.KeyGenerators;
 import com.mybatisflex.core.logicdelete.LogicDeleteManager;
-import com.mybatisflex.core.logicdelete.impl.DateTimeLogicDeleteProcessor;
+import com.mybatisflex.core.logicdelete.impl.TimeStampLogicDeleteProcessor;
 import com.mybatisflex.core.query.QueryColumnBehavior;
 import com.mybatisflex.spring.boot.MyBatisFlexCustomizer;
 import lombok.extern.slf4j.Slf4j;
@@ -80,7 +80,7 @@ public class MyBatisFlexAutoConfiguration {
             // 逻辑删除字段
             if (globalConfig.getLogicDeleteColumn() == null) {
                 globalConfig.setLogicDeleteColumn("deleted");
-                LogicDeleteManager.setProcessor(new DateTimeLogicDeleteProcessor());
+                LogicDeleteManager.setProcessor(new TimeStampLogicDeleteProcessor());
             }
             // 租户字段
             if (globalConfig.getTenantColumn() == null) {
