@@ -46,6 +46,15 @@ public final class CacheKeyBuilder {
         return builder.toString();
     }
 
+    public static String build(String... keys) {
+        StringBuilder builder = new StringBuilder();
+        append(builder, cacheProperties.getKeyPrefix());
+        for (String key : keys) {
+            append(builder, key);
+        }
+        return builder.toString();
+    }
+
     private static void append(StringBuilder builder, String value) {
         if (STR.isNotBlank(value)) {
             builder.append(value);

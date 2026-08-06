@@ -5,9 +5,12 @@ import cn.dev33.satoken.context.SaHolder;
 import cn.dev33.satoken.filter.SaServletFilter;
 import cn.dev33.satoken.interceptor.SaInterceptor;
 import cn.dev33.satoken.stp.StpUtil;
+import com.coderych.commons.cache.autoconfigure.CacheProperties;
+import com.coderych.commons.cache.support.CacheKeyBuilder;
 import com.coderych.commons.core.model.R;
 import com.coderych.commons.satoken.core.LoginUser;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.SmartInitializingSingleton;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -60,10 +63,19 @@ public class SaTokenAutoConfiguration {
     }
 
     @Bean
-    public SmartInitializingSingleton satokenInitializer(SaTokenConfig saTokenConfig, SaTokenProperties saTokenProperties) {
+    public SmartInitializingSingleton satokenInitializer(SaTokenConfig saTokenConfig,
+                                                         SaTokenProperties saTokenProperties,
+                                                         ObjectProvider<CacheProperties> cachePropertiesProvider) {
         return () -> {
             log.info(">>>>>>>>> Bean: satokenInitializer —— 初始化 Sa-Token LoginUser");
-            LoginUser.init(saTokenProperties.isEnabled(), saTokenConfig.getTokenName(), saTokenProperties.getSuperAdmins());
+            CacheProperties cacheProperties = cachePropertiesProvider.getIfAvailable();
+            String tokenName = saTokenConfig.getTokenName();
+            if (cacheProperties != null) {
+                CacheKeyBuilder.init(cacheProperties);
+                tokenName = CacheKeyBuilder.build(tokenName);
+                saTokenConfig.setTokenName(tokenName);
+            }
+            LoginUser.init(saTokenProperties.isEnabled(), tokenName, saTokenProperties.getSuperAdmins());
         };
     }
 }

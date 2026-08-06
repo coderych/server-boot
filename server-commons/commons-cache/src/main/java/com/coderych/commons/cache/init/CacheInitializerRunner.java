@@ -4,6 +4,7 @@ import com.coderych.commons.cache.autoconfigure.CacheProperties;
 import com.coderych.commons.core.exception.InternalException;
 import com.coderych.commons.core.util.spring.SpringUtils;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 
 import java.util.Comparator;
@@ -20,6 +21,7 @@ import java.util.concurrent.Executors;
  * @author YCH
  */
 @RequiredArgsConstructor
+@Slf4j
 public class CacheInitializerRunner implements CommandLineRunner {
 
     private final CacheProperties properties;
@@ -75,6 +77,7 @@ public class CacheInitializerRunner implements CommandLineRunner {
             boolean failOnError = initializer.isFailOnError() != null
                     ? initializer.isFailOnError()
                     : properties.getInit().isDefaultFailOnError();
+            log.error("缓存初始化失败，初始化器：{}", initializer.getName(), exception);
             if (failOnError) {
                 throw exception;
             }

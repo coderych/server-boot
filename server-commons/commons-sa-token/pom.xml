@@ -28,6 +28,10 @@
         </dependency>
         <dependency>
             <groupId>com.coderych</groupId>
+            <artifactId>commons-cache</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.coderych</groupId>
             <artifactId>commons-test</artifactId>
             <scope>test</scope>
         </dependency>
