@@ -70,8 +70,8 @@ public final class LoginUser {
         LOGIN_USERNAME_CACHE_KEY = TOKEN_NAME + ":login:username:";
         LOGIN_USER_CACHE_KEY = TOKEN_NAME + ":login:user:";
         LOGIN_TENANT_CACHE_KEY = TOKEN_NAME + ":login:tenant:";
-        LOGIN_USER_FIND_ROLE_CACHE_KEY = TOKEN_NAME + ":login:user:role:";
-        LOGIN_ROLE_FIND_PERMISSION_CACHE_KEY = TOKEN_NAME + ":login:role:permission:";
+        LOGIN_USER_FIND_ROLE_CACHE_KEY = TOKEN_NAME + ":login:user-roles:";
+        LOGIN_ROLE_FIND_PERMISSION_CACHE_KEY = TOKEN_NAME + ":login:role-permissions:";
         SUPER_ADMINS = Arrays.asList(superAdmins);
     }
 

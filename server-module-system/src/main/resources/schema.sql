@@ -449,3 +449,14 @@ VALUES (
     '超级管理员',
     1
 );
+
+-- 系统配置
+INSERT INTO `sys_config`
+(`id`, `tenant_id`, `name`, `key`, `value`, `group`, `status`, `remark`, `creator`, `create_time`, `updater`, `update_time`, `deleted`, `version`)
+VALUES
+    (1, '0', '是否开放企业注册',     'sys.account.register.enabled', 'true',  'system', 1, '是否开放企业注册功能：true 开启，false 关闭', '1', NOW(), '1', NOW(), 0, 1),
+    (2, '0', '是否启用登录验证码',   'sys.account.captcha.enabled',  'true',  'system', 1, '登录时是否启用验证码：true 启用，false 关闭', '1', NOW(), '1', NOW(), 0, 1),
+    (3, '0', '登录验证码类型',       'sys.account.captcha.type',     'math',  'system', 1, '验证码类型：math-算术，char-字符，image-图片', '1', NOW(), '1', NOW(), 0, 1),
+    (4, '0', '登录最大重试次数',     'sys.account.login.maxRetry',   '5',     'system', 1, '密码连续错误最大次数，超过后锁定登录', '1', NOW(), '1', NOW(), 0, 1),
+    (5, '0', '登录锁定时间（分钟）', 'sys.account.login.lockMinutes', '10',    'system', 1, '超出最大重试次数后账号锁定时间（分钟）', '1', NOW(), '1', NOW(), 0, 1),
+    (6, '0', '密码规则',             'sys.account.password.rule',    '{"minLength":8,"maxLength":32,"requireUpper":true,"requireLower":true,"requireDigit":true,"requireSpecial":false,"notAllowUsername":true}', 'system', 1, '密码强度规则（JSON）：长度、大小写字母、数字、特殊字符要求', '1', NOW(), '1', NOW(), 0, 1);

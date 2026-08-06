@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.Instant;
 import java.time.ZoneId;
 import java.util.Date;
 
@@ -144,7 +145,7 @@ class DateUtilsTests {
     void fromEpochMilliAndEpochMilliShouldBeConsistent() {
         LocalDateTime original = LocalDateTime.of(2025, 6, 15, 12, 30, 0);
         long millis = DateUtils.epochMilli(original, ZoneId.of("UTC"));
-        LocalDateTime restored = LocalDateTime.ofInstant(java.time.Instant.ofEpochMilli(millis), ZoneId.of("UTC"));
+        LocalDateTime restored = LocalDateTime.ofInstant(Instant.ofEpochMilli(millis), ZoneId.of("UTC"));
         assertEquals(original, restored);
     }
 }

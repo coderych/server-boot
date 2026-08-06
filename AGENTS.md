@@ -53,3 +53,8 @@ For multi-step tasks, state a brief plan:
 ```
 
 Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
+
+## 5. Import Style
+
+- 禁止在代码中直接使用全限定类名（例如 `com.coderych.server.system.model.vo.CaptchaVO`），包括返回值、参数、字段和泛型类型声明。
+- 应先通过 `import` 导入类型，再使用简单类名；仅在确有命名冲突且无法通过调整导入解决时例外。

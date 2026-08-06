@@ -11,6 +11,9 @@ import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.quartz.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
@@ -53,7 +56,7 @@ class DelegatingQuartzJobTests {
     private JobDataMap createJobDataMap(int attempt, int maxAttempts, long delayMs, double backoffMultiplier) {
         JobDataMap dataMap = new JobDataMap();
         dataMap.put("commons.job.handlerName", "testHandler");
-        dataMap.put("commons.job.data", new java.util.HashMap<>());
+        dataMap.put("commons.job.data", new HashMap<>());
         dataMap.put("commons.job.manualTrigger", false);
         dataMap.put("commons.job.attempt", attempt);
         dataMap.put("commons.job.retry.maxAttempts", maxAttempts);
@@ -158,7 +161,7 @@ class DelegatingQuartzJobTests {
     void shouldBuildCorrectExecuteContext() throws Exception {
         JobDataMap dataMap = createJobDataMap(2, 5, 500, 1.5);
         dataMap.put("commons.job.manualTrigger", true);
-        java.util.Map<String, Object> jobData = new java.util.HashMap<>();
+        Map<String, Object> jobData = new HashMap<>();
         jobData.put("key1", "value1");
         dataMap.put("commons.job.data", jobData);
         when(jobExecutionContext.getMergedJobDataMap()).thenReturn(dataMap);

@@ -14,6 +14,8 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Consumer;
 
+import static org.springframework.data.redis.connection.stream.Consumer.from;
+
 /**
  * 基于 Redis Stream 的消息队列模板。
  * <p>支持消息发布（offer）、消费（poll/consume）、确认（ack），
@@ -106,7 +108,7 @@ public class RedisQueueTemplate {
                                                          Duration timeout) {
         ensureGroup(queueName, consumerGroup);
         List<ObjectRecord<String, RedisQueueMessage>> records = streamOperations().read(RedisQueueMessage.class,
-                org.springframework.data.redis.connection.stream.Consumer.from(groupName(consumerGroup), consumerName),
+                from(groupName(consumerGroup), consumerName),
                 StreamReadOptions.empty().count(1).block(timeout == null ? properties.getQueue().getBlockTime() : timeout),
                 StreamOffset.create(streamKey(queueName), ReadOffset.lastConsumed()));
         return records == null || records.isEmpty() ? null : records.getFirst();

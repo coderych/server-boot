@@ -18,6 +18,9 @@ import org.springframework.core.Ordered;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import java.util.List;
+import java.util.function.Consumer;
+
 /**
  * Web 模块自动配置类。
  * <p>按需注册全局异常处理、请求/响应加解密 Advice、XSS 过滤器和 CORS 配置器，各子功能均可通过配置独立开关。</p>
@@ -89,7 +92,7 @@ public class WebAutoConfiguration {
                 }
             }
 
-            private void applyIfNonEmpty(java.util.List<String> values, java.util.function.Consumer<String[]> consumer) {
+            private void applyIfNonEmpty(List<String> values, Consumer<String[]> consumer) {
                 if (values != null && !values.isEmpty()) {
                     consumer.accept(values.toArray(new String[0]));
                 }

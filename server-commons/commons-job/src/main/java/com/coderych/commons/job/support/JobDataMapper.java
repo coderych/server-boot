@@ -8,6 +8,7 @@ import org.quartz.*;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Date;
 
 /**
  * Quartz Job 数据映射工具类。
@@ -91,7 +92,7 @@ public final class JobDataMapper {
             }
             return builder.withSchedule(schedule).build();
         }
-        return builder.startAt(java.util.Date.from(request.getStartAt())).build();
+        return builder.startAt(Date.from(request.getStartAt())).build();
     }
 
     public static Trigger toRetryTrigger(JobExecutionContext context, int nextAttempt, long delayMs) {
@@ -104,7 +105,7 @@ public final class JobDataMapper {
                 .withIdentity(retryTriggerKey(jobKey.getName(), jobKey.getGroup()))
                 .forJob(jobKey)
                 .usingJobData(dataMap)
-                .startAt(new java.util.Date(System.currentTimeMillis() + delayMs))
+                .startAt(new Date(System.currentTimeMillis() + delayMs))
                 .build();
     }
 

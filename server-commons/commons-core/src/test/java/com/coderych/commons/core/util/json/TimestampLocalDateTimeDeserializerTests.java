@@ -5,6 +5,7 @@ import tools.jackson.databind.json.JsonMapper;
 import tools.jackson.databind.module.SimpleModule;
 
 import java.time.LocalDateTime;
+import java.time.Instant;
 import java.time.ZoneId;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -32,7 +33,7 @@ class TimestampLocalDateTimeDeserializerTests {
     void shouldDeserializeEpochTimestamp() throws Exception {
         JsonMapper mapper = createMapper();
         LocalDateTime result = mapper.readValue("0", LocalDateTime.class);
-        LocalDateTime expected = LocalDateTime.ofInstant(java.time.Instant.ofEpochMilli(0), ZoneId.systemDefault());
+        LocalDateTime expected = LocalDateTime.ofInstant(Instant.ofEpochMilli(0), ZoneId.systemDefault());
         assertEquals(expected, result);
     }
 

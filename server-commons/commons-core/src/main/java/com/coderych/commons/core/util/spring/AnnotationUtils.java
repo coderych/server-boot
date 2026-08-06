@@ -1,6 +1,7 @@
 package com.coderych.commons.core.util.spring;
 
 import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
 import org.springframework.core.MethodParameter;
 import org.springframework.core.annotation.MergedAnnotation;
 import org.springframework.core.annotation.MergedAnnotations;
@@ -13,7 +14,7 @@ import java.util.Objects;
  *
  * @author YCH
  */
-@NoArgsConstructor(access = lombok.AccessLevel.PRIVATE)
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class AnnotationUtils {
     public static <T extends Annotation> T resolve(MethodParameter methodParameter, Class<T> annotationType) {
         T methodAnnotation = methodParameter.getMethodAnnotation(annotationType);

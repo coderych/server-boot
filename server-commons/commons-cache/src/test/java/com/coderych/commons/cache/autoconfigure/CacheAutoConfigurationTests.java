@@ -11,6 +11,8 @@ import org.springframework.data.redis.cache.RedisCacheConfiguration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 
+import java.time.Duration;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 
@@ -125,7 +127,7 @@ class CacheAutoConfigurationTests {
                     CacheProperties props = context.getBean(CacheProperties.class);
                     assertThat(props.getKeyPrefix()).isEqualTo("myprefix:");
                     assertThat(props.getRedis().getKeyPrefix()).isEqualTo("rc:");
-                    assertThat(props.getRedis().getDefaultTtl()).isEqualTo(java.time.Duration.ofHours(1));
+                    assertThat(props.getRedis().getDefaultTtl()).isEqualTo(Duration.ofHours(1));
                     assertThat(props.getLock().getKeyPrefix()).isEqualTo("lk:");
                 });
     }

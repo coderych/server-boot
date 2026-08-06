@@ -5,6 +5,9 @@ import tools.jackson.core.JsonGenerator;
 import tools.jackson.databind.SerializationContext;
 import tools.jackson.databind.ser.jdk.NumberSerializer;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+
 /**
  * 大数字 JSON 序列化器，超出 JavaScript 安全整数范围的数值序列化为字符串，
  * 避免前端精度丢失。
@@ -38,13 +41,13 @@ public class BigNumberSerializer extends NumberSerializer {
     }
 
     private boolean isOutOfRange(Number value) {
-        if (value instanceof java.math.BigDecimal bd) {
-            return bd.compareTo(java.math.BigDecimal.valueOf(MAX_SAFE_INTEGER)) > 0
-                    || bd.compareTo(java.math.BigDecimal.valueOf(MIN_SAFE_INTEGER)) < 0;
+        if (value instanceof BigDecimal bd) {
+            return bd.compareTo(BigDecimal.valueOf(MAX_SAFE_INTEGER)) > 0
+                    || bd.compareTo(BigDecimal.valueOf(MIN_SAFE_INTEGER)) < 0;
         }
-        if (value instanceof java.math.BigInteger bi) {
-            return bi.compareTo(java.math.BigInteger.valueOf(MAX_SAFE_INTEGER)) > 0
-                    || bi.compareTo(java.math.BigInteger.valueOf(MIN_SAFE_INTEGER)) < 0;
+        if (value instanceof BigInteger bi) {
+            return bi.compareTo(BigInteger.valueOf(MAX_SAFE_INTEGER)) > 0
+                    || bi.compareTo(BigInteger.valueOf(MIN_SAFE_INTEGER)) < 0;
         }
         return value.longValue() > MAX_SAFE_INTEGER || value.longValue() < MIN_SAFE_INTEGER;
     }

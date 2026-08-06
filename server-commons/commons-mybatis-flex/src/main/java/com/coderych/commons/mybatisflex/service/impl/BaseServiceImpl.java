@@ -1,10 +1,10 @@
 package com.coderych.commons.mybatisflex.service.impl;
 
+import com.coderych.commons.core.enums.ResultCode;
+import com.coderych.commons.core.exception.BizException;
 import com.coderych.commons.core.model.P;
 import com.coderych.commons.core.model.PageQuery;
 import com.coderych.commons.core.model.Query;
-import com.coderych.commons.core.enums.ResultCode;
-import com.coderych.commons.core.exception.BizException;
 import com.coderych.commons.core.util.BEAN;
 import com.coderych.commons.core.util.object.ClassUtils;
 import com.coderych.commons.mybatisflex.service.BaseService;
@@ -65,7 +65,10 @@ public class BaseServiceImpl<M extends BaseMapper<E>, E, Q, F, D> extends Servic
     public void insert(F form) {
         onInsertOrUpdateBefore(form, true);
         E entity = BEAN.convert(form, eClass);
-        mapper.insert(entity);
+        int rows = mapper.insert(entity);
+        if (rows != 1) {
+            throw new BizException(ResultCode.OPERATION_FAILED, "新增数据失败");
+        }
         onInsertOrUpdateAfter(entity, form, true);
     }
 
@@ -73,14 +76,20 @@ public class BaseServiceImpl<M extends BaseMapper<E>, E, Q, F, D> extends Servic
     public void update(F form) {
         onInsertOrUpdateBefore(form, false);
         E entity = BEAN.convert(form, eClass);
-        mapper.update(entity);
+        int rows = mapper.update(entity);
+        if (rows != 1) {
+            throw new BizException(ResultCode.OPERATION_FAILED, "更新数据失败");
+        }
         onInsertOrUpdateAfter(entity, form, false);
     }
 
     @Override
     public void deleteById(Serializable id) {
         onDeleteBefore(id);
-        mapper.deleteById(id);
+        int rows = mapper.deleteById(id);
+        if (rows != 1) {
+            throw new BizException(ResultCode.OPERATION_FAILED, "删除数据失败");
+        }
         onDeleteAfter(id);
     }
 

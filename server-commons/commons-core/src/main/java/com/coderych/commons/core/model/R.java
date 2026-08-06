@@ -2,6 +2,7 @@ package com.coderych.commons.core.model;
 
 import com.coderych.commons.core.enums.ResultCode;
 import lombok.Data;
+import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
 import java.io.Serial;
@@ -14,7 +15,7 @@ import java.io.Serializable;
  * @author YCH
  */
 @Data
-@NoArgsConstructor(access = lombok.AccessLevel.PRIVATE)
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class R<T> implements Serializable {
     /**
      * 成功状态码。
